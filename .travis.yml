@@ -19,7 +19,7 @@ deploy:
     secure:
   app: job-quest-be
   on:
-    repo: JobQuest/job-quest-be
+    repo: JobQuest/jobquest-be
     branch: main
   skip_cleanup: 'true'
   run:
