@@ -204,21 +204,21 @@ class Encounter(db.Model):
     id = Column(Integer, primary_key=True)
     # description
     description = Column(String(1000), nullable=False)
-    # quest_type
-    quest_type = Column(String(80), nullable=False)
+    # type
+    type = Column(String(80), nullable=False)
     # monster_image
     monster_image = Column(String(3000), nullable=False)
 
-    def __init__(self, description, quest_type, monster_image):
+    def __init__(self, description, type, monster_image):
         if description is not None:
             description = bleach.clean(description).strip()
             if description == '':
                 description = None
 
-        if quest_type is not None:
-            quest_type = bleach.clean(quest_type).strip()
-            if quest_type == '':
-                quest_type = None
+        if type is not None:
+            type = bleach.clean(type).strip()
+            if type == '':
+                type = None
 
         if monster_image is not None:
             monster_image = bleach.clean(monster_image).strip()
@@ -226,7 +226,7 @@ class Encounter(db.Model):
                 monster_image = None
 
         self.description = description
-        self.quest_type = quest_type
+        self.type = type
         self.monster_image = monster_image
 
     def insert(self):
