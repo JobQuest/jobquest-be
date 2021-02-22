@@ -10,8 +10,8 @@ install:
 - pip install -r requirements.txt
 before_script:
 - psql --version
-- psql -c 'drop database jobquest_test;' -U postgres
-- psql -c 'create database jobquest_test;' -U postgres
+# - psql -c 'drop database jobquest_test;' -U postgres
+- psql -c 'create database jobquest_test;' 
 - python manage.py db upgrade
 script:
 - pytest
