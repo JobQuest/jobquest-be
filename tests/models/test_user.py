@@ -19,7 +19,7 @@ class AppTest(unittest.TestCase):
         self.app_context.pop()
 
     def test_user_model(self):
-        user = User(username='ian', email='ian.douglas@iandouglas.com')
+        user = User(username='ian', email='ian.douglas@iandouglas.com', timestamp=' 2021-01-18 02:20:35.356331 ')
         user.insert()
 
         self.assertIsInstance(user, User)
@@ -30,6 +30,7 @@ class AppTest(unittest.TestCase):
     def test_user_model_with_forced_id(self):
         user = User(username='ian',
                     email='ian.douglas@iandouglas.com',
+                    timestamp='2021-01-18 02:20:35.356331',
                     user_id=1)
         user.insert()
 
@@ -40,23 +41,23 @@ class AppTest(unittest.TestCase):
         self.assertEqual('ian.douglas@iandouglas.com', user.email)
 
     def test_user_model_trimmed_username(self):
-        user = User(username=' ian ', email='ian.douglas@iandouglas.com')
+        user = User(username=' ian ', email='ian.douglas@iandouglas.com', timestamp='2021-01-18 02:20:35.356331')
         user.insert()
 
         self.assertEqual('ian', user.username)
 
     def test_user_model_trimmed_email(self):
-        user = User(username='ian', email=' ian.douglas@iandouglas.com ')
+        user = User(username='ian', email=' ian.douglas@iandouglas.com ', timestamp=' 2021-01-18 02:20:35.356331 ')
         user.insert()
 
         self.assertEqual('ian.douglas@iandouglas.com', user.email)
 
     def test_user_model_unique_username(self):
-        user = User(username='ian', email='ian.douglas@iandouglas.com')
+        user = User(username='ian', email='ian.douglas@iandouglas.com', timestamp=' 2021-01-18 02:20:35.356331 ')
         user.insert()
 
         try:
-            user = User(username='ian', email='ian.douglas+2@iandouglas.com')
+            user = User(username='ian', email='ian.douglas+2@iandouglas.com', timestamp=' 2021-01-18 02:20:35.356331 ')
             user.insert()
         except IntegrityError:
             self.assertTrue(True)
@@ -66,7 +67,7 @@ class AppTest(unittest.TestCase):
 
     def test_user_model_blank_username(self):
         try:
-            user = User(username='', email='ian.douglas@iandouglas.com')
+            user = User(username='', email='ian.douglas@iandouglas.com', timestamp=' 2021-01-18 02:20:35.356331 ')
             user.insert()
         except IntegrityError:
             self.assertTrue(True)
@@ -76,7 +77,7 @@ class AppTest(unittest.TestCase):
 
     def test_user_model_missing_username(self):
         try:
-            user = User(username=None, email='ian.douglas@iandouglas.com')
+            user = User(username=None, email='ian.douglas@iandouglas.com', timestamp=' 2021-01-18 02:20:35.356331 ')
             user.insert()
         except IntegrityError:
             self.assertTrue(True)
@@ -85,11 +86,11 @@ class AppTest(unittest.TestCase):
             self.assertTrue(False)  # pragma: no cover
 
     def test_user_model_unique_email(self):
-        user = User(username='ian', email='ian.douglas@iandouglas.com')
+        user = User(username='ian', email='ian.douglas@iandouglas.com', timestamp=' 2021-01-18 02:20:35.356331 ')
         user.insert()
 
         try:
-            user = User(username='ian2', email='ian.douglas@iandouglas.com')
+            user = User(username='ian2', email='ian.douglas@iandouglas.com', timestamp=' 2021-01-18 02:20:35.356331 ')
             user.insert()
         except IntegrityError:
             self.assertTrue(True)
@@ -99,7 +100,7 @@ class AppTest(unittest.TestCase):
 
     def test_user_model_blank_email(self):
         try:
-            user = User(username='ian', email='')
+            user = User(username='ian', email='', timestamp=' 2021-01-18 02:20:35.356331 ')
             user.insert()
         except IntegrityError:
             self.assertTrue(True)
@@ -109,7 +110,7 @@ class AppTest(unittest.TestCase):
 
     def test_user_model_missing_email(self):
         try:
-            user = User(username='ian', email=None)
+            user = User(username='ian', email=None, timestamp=' 2021-01-18 02:20:35.356331 ')
             user.insert()
         except IntegrityError:
             self.assertTrue(True)

@@ -16,7 +16,7 @@ class GetUserTest(unittest.TestCase):
         db.create_all()
         self.client = self.app.test_client()
 
-        self.user_1 = User(username='zzz 1', email='e1')
+        self.user_1 = User(username='zzz 1', email='e1', timestamp=' 2021-01-18 02:20:35.356331 ')
         self.user_1.insert()
 
     def tearDown(self):

@@ -23,9 +23,9 @@ class GetUsersTest(unittest.TestCase):
 
 class GetAllUsersTest(GetUsersTest):
     def test_happypath_get_all_users(self):
-        user_1 = User(username='zzz 1', email='email 1')
+        user_1 = User(username='zzz 1', email='email 1', timestamp=' 2021-01-18 02:20:35.356331 ')
         user_1.insert()
-        user_2 = User(username='aaa 1', email='email 2')
+        user_2 = User(username='aaa 1', email='email 2', timestamp=' 2021-01-18 02:20:35.356331 ')
         user_2.insert()
 
         response = self.client.get(

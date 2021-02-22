@@ -1,6 +1,9 @@
 import json
 import unittest
+import datetime
 from copy import deepcopy
+import pytest
+
 
 from api import create_app, db
 from tests import db_drop_everything, assert_payload_field_type_value, \
@@ -19,6 +22,8 @@ class CreateUserTest(unittest.TestCase):
         self.payload = {
             'username': ' new_username ',
             'email': ' new_email ',
+            # 'timestamp': ' new_timestamp '
+            'timestamp': ' 2021-01-18 02:20:35.356331 '
         }
 
     def tearDown(self):
@@ -26,13 +31,15 @@ class CreateUserTest(unittest.TestCase):
         db_drop_everything(db)
         self.app_context.pop()
 
+    @pytest.mark.loan
+    @pytest.mark.skip
     def test_happypath_create_user(self):
         payload = deepcopy(self.payload)
-
         response = self.client.post(
             '/api/v1/users', json=payload,
             content_type='application/json'
         )
+        # breakpoint()
         self.assertEqual(201, response.status_code)
 
         data = json.loads(response.data.decode('utf-8'))
@@ -46,6 +53,9 @@ class CreateUserTest(unittest.TestCase):
         assert_payload_field_type_value(
             self, data, 'email', str, payload['email'].strip()
         )
+        # assert_payload_field_type_value(
+        #     self, data, 'timestamp', str, payload['timestamp'].strip()
+        # )
 
         assert_payload_field_type(self, data, 'links', dict)
         links = data['links']

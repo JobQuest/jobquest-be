@@ -17,13 +17,14 @@ class PatchuserTest(unittest.TestCase):
         db.create_all()
         self.client = self.app.test_client()
 
-        self.user_1 = User(username='zzz 1', email='e1')
+        self.user_1 = User(username='zzz 1', email='e1', timestamp=' 2021-01-18 02:20:35.356331 ')
         self.user_1.insert()
 
         # adding extra padding in here to ensure we strip() it off later
         self.payload = {
             'username': ' new_username ',
             'email': ' new_email ',
+            'time': ' 2021-01-18 02:20:35.356331 '
         }
 
     def tearDown(self):
@@ -50,6 +51,9 @@ class PatchuserTest(unittest.TestCase):
         assert_payload_field_type_value(
             self, data, 'email', str, payload['email'].strip()
         )
+        # assert_payload_field_type_value(
+        #     self, data, 'timestamp', str, payload['timestamp'].strip()
+        # )
 
         user_id = data['id']
         assert_payload_field_type(self, data, 'links', dict)
