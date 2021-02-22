@@ -11,7 +11,7 @@ install:
 before_script:
 - psql --version
 # - psql -c 'drop database jobquest_test;' -U postgres
-- psql -c 'create database jobquest_test;' -U postgres
+# - psql -c 'create database jobquest_test;x' -U postgres
 - python manage.py db upgrade
 script:
 - pytest
