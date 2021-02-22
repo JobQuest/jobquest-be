@@ -53,9 +53,6 @@ class CreateUserTest(unittest.TestCase):
         assert_payload_field_type_value(
             self, data, 'email', str, payload['email'].strip()
         )
-        # assert_payload_field_type_value(
-        #     self, data, 'timestamp', str, payload['timestamp'].strip()
-        # )
 
         assert_payload_field_type(self, data, 'links', dict)
         links = data['links']
