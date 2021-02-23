@@ -200,7 +200,7 @@ class Action(db.Model):
 
     # Auto-incrementing, unique primary key
     id = Column(Integer, primary_key=True, autoincrement=True)
-    # encounter_id, foreign_key to the quest table
+    # encounter_id, foreign_key to the action table
     encounter_id = Column(Integer, ForeignKey('encounters.id'), index=True, nullable=False)
     # description
     description = Column(String(400), nullable=False)
