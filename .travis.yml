@@ -1,6 +1,6 @@
 language: python
 python:
-- '3.8'
+- '3.9.1'
 services:
 - postgresql
 addons:
@@ -9,19 +9,16 @@ install:
 - pip install -r requirements.txt
 before_script:
 - psql --version
-- psql -c 'create database yourdatabase_test;' -U postgres
+- psql -c 'create database jobquest_test;' -U postgres
 - python manage.py db upgrade
 script:
 - pytest
 deploy:
   provider: heroku
   api_key:
-    secure:
-  app: your-heroku-app-name
+    secure: xZ5MlpYwUoNn4FaU7HJmHHVpUeAe6aTdH5XMi0jEFB23c4tuy8RHbGeilnQwrWYnXIX+kkqeG6rHClQ8BZQdLmXAjbuunQ18ukmZbRnqoSXtN/dOb2Ed4Dki+qn9rv0e8lEN3NChnjB/rSZrn29qgunTeuvGyfUxcpPYGi9dhS6tscQIz2r3tJjXPlVYIY1rM8pheaf5rOrobwQkoQ/6X9Jcmwta7NxanvVgO2d0865RO6jo6s65/iHH2oXaLY3YqKQvhsYpXcq+ql/9CIeD8pq77kEcOPOF2xpkmSI5N/WKK3HRZzKyKTqSovicWvcxEjR7yHSvvN1DIJWxHf11S5EjCkwUukNcyghYhfulXNgQZcmTLntrSp2KmfHwoe11K0k+XkXPWyX5osioR073jKWx+e/UkfNFYUsLCT/6l6P+Fm1SQeU3N/esTZxmCyVEYNeAtaoxKa7Bm4e5sRZDZ5BvtGwi+HzC4d6Lx7h7pYK/JNtcrIHAMrPOwsxCFD9nLY0YZUwS+xYGQBAcS0OynfCri8a+Ccu0AXfnivoDra/vJRMJB/IphTFB13wcnxPkgcEqovBb+uYOcQPFlK+OFU1qVgxGz+JJmjfV8PqPUgIk+frc4p4HZUI4m85wLT8dVI1jWxvDg6l0bjT1PCS3R1+gF7FDK4StC4cqROi1AiI=
+  app: job-quest-be
   on:
-    repo: githubu_sername/repo_name
+    repo: JobQuest/jobquest-be
     branch: main
   skip_cleanup: 'true'
-  run:
-    - pip install -r requirements.txt
-    - python manage.py db upgrade
