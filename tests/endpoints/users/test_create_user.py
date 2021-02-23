@@ -10,28 +10,27 @@ from tests import db_drop_everything, assert_payload_field_type_value, \
     assert_payload_field_type
 
 
-# class CreateUserTest(unittest.TestCase):
-#     def setUp(self):
-#         self.app = create_app('testing')
-#         self.app_context = self.app.app_context()
-#         self.app_context.push()
-#         db.create_all()
-#         self.client = self.app.test_client()
+class CreateUserTest(unittest.TestCase):
+    def setUp(self):
+        self.app = create_app('testing')
+        self.app_context = self.app.app_context()
+        self.app_context.push()
+        db.create_all()
+        self.client = self.app.test_client()
+
+        # adding extra padding in here to ensure we strip() it off later
+        self.payload = {
+            'username': ' new_username ',
+            'email': ' new_email ',
+            'xp': ' 0 '
+        }
+
+    def tearDown(self):
+        db.session.remove()
+        db_drop_everything(db)
+        self.app_context.pop()
 #
-#         # adding extra padding in here to ensure we strip() it off later
-#         self.payload = {
-#             'username': ' new_username ',
-#             'email': ' new_email ',
-#             'xp': ' 0 ',
-#             'timestamp': ' 2021-01-18 02:20:35.356331 '
-#         }
-#
-#     def tearDown(self):
-#         db.session.remove()
-#         db_drop_everything(db)
-#         self.app_context.pop()
-#
-#     # @pytest.mark.loan
+    # @pytest.mark.loan
 #     @pytest.mark.skip
 #     def test_happypath_create_user(self):
 #         payload = deepcopy(self.payload)
@@ -123,19 +122,19 @@ from tests import db_drop_everything, assert_payload_field_type_value, \
 #             ["required 'email' parameter is missing"]
 #         )
 #
-#     def test_sadpath_blank_email(self):
-#         payload = deepcopy(self.payload)
-#         payload['email'] = ' '
-#         response = self.client.post(
-#             '/api/v1/users', json=payload,
-#             content_type='application/json'
-#         )
-#         self.assertEqual(400, response.status_code)
-#
-#         data = json.loads(response.data.decode('utf-8'))
-#         assert_payload_field_type_value(self, data, 'success', bool, False)
-#         assert_payload_field_type_value(self, data, 'error', int, 400)
-#         assert_payload_field_type_value(
-#             self, data, 'errors', list,
-#             ["required 'email' parameter is blank"]
-#         )
+    def test_sadpath_blank_email(self):
+        payload = deepcopy(self.payload)
+        payload['email'] = ' '
+        response = self.client.post(
+            '/api/v1/users', json=payload,
+            content_type='application/json'
+        )
+        self.assertEqual(400, response.status_code)
+
+        data = json.loads(response.data.decode('utf-8'))
+        assert_payload_field_type_value(self, data, 'success', bool, False)
+        assert_payload_field_type_value(self, data, 'error', int, 400)
+        assert_payload_field_type_value(
+            self, data, 'errors', list,
+            ["required 'email' parameter is blank"]
+        )
