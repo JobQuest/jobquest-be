@@ -1,8 +1,8 @@
-# import json
-# import unittest
-# from unittest.mock import patch
-# from tests import db_drop_everything, assert_payload_field_type_value
-# from api import create_app, db
+import json
+import unittest
+from unittest.mock import patch
+from tests import db_drop_everything, assert_payload_field_type_value
+from api import create_app, db
 
 
 class AppTest(unittest.TestCase):
