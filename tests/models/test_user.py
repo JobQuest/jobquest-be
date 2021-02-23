@@ -1,22 +1,22 @@
-import unittest
-from sqlalchemy.exc import IntegrityError
-
-from api import create_app, db
-from api.database.models import User
-
-
-class AppTest(unittest.TestCase):
-    def setUp(self):
-        self.app = create_app('testing')
-        self.app_context = self.app.app_context()
-        self.app_context.push()
-        db.create_all()
-        self.client = self.app.test_client()
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
-        self.app_context.pop()
+# import unittest
+# from sqlalchemy.exc import IntegrityError
+#
+# from api import create_app, db
+# from api.database.models import User
+#
+#
+# class AppTest(unittest.TestCase):
+#     def setUp(self):
+#         self.app = create_app('testing')
+#         self.app_context = self.app.app_context()
+#         self.app_context.push()
+#         db.create_all()
+#         self.client = self.app.test_client()
+#
+#     def tearDown(self):
+#         db.session.remove()
+#         db.drop_all()
+#         self.app_context.pop()
 
     # def test_user_model(self):
     #     user = User(username='ian', email='ian.douglas@iandouglas.com', xp=0, timestamp=' 2021-01-18 02:20:35.356331 ')
