@@ -1,6 +1,6 @@
 language: python
 python:
-- 3.9.1
+- '3.9.1'
 services:
 - postgresql
 addons:
@@ -20,5 +20,5 @@ deploy:
   app: job-quest-be
   on:
     repo: JobQuest/jobquest-be
-    branch: set-up
+    branch: main
   skip_cleanup: 'true'
