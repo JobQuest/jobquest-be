@@ -1,5 +1,6 @@
 import datetime
 import json
+from flask import jsonify
 
 import bleach
 from flask import request
@@ -27,14 +28,14 @@ def _validate_field(data, field, proceed, errors, missing_okay=False):
 
 def _user_payload(user):
     return {
-        'id': user.id,
-        'username': user.username,
-        'email': user.email,
-        'links': {
-            'get': f'/api/v1/users/{user.id}',
-            'patch': f'/api/v1/users/{user.id}',
-            'delete': f'/api/v1/users/{user.id}',
-            'index': '/api/v1/users',
+        'data': {
+            'id': user.id,
+            'type': 'users',
+            'attributes': {
+                'email': user.email,
+                'username': user.username,
+                'xp': user.xp
+            }
         }
     }
 
@@ -82,14 +83,17 @@ class UsersResource(Resource):
             }, 400
 
     def get(self, *args, **kwargs):
-        users = User.query.order_by(
-            User.username.asc()
-        ).all()
-        results = [_user_payload(user) for user in users]
-        return {
-            'success': True,
-            'results': results
-        }, 200
+        data = request.get_json()
+        user_email = data['email']
+        try:
+            user = User.query.filter_by(email=user_email).one()
+        except NoResultFound:
+            return abort(404)
+
+        user_payload = _user_payload(user)
+        user_payload['success'] = True
+        return user_payload, 200
+
 
 
 class UserResource(Resource):
