@@ -22,7 +22,7 @@ class CreateUserTest(unittest.TestCase):
         self.payload = {
             'username': ' new_username ',
             'email': ' new_email ',
-            # 'timestamp': ' new_timestamp '
+            'xp': ' 0 ',
             'timestamp': ' 2021-01-18 02:20:35.356331 '
         }
 
@@ -31,7 +31,7 @@ class CreateUserTest(unittest.TestCase):
         db_drop_everything(db)
         self.app_context.pop()
 
-    @pytest.mark.loan
+    # @pytest.mark.loan
     @pytest.mark.skip
     def test_happypath_create_user(self):
         payload = deepcopy(self.payload)
@@ -52,6 +52,9 @@ class CreateUserTest(unittest.TestCase):
         )
         assert_payload_field_type_value(
             self, data, 'email', str, payload['email'].strip()
+        )
+        assert_payload_field_type_value(
+            self, data, 'xp', str, payload['xp'].strip()
         )
 
         assert_payload_field_type(self, data, 'links', dict)
