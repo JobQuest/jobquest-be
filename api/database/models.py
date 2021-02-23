@@ -12,7 +12,7 @@ class User(db.Model):
 
     # Auto-incrementing, unique primary key
     id = Column(Integer, primary_key=True, autoincrement=True)
-    # unique username
+    # unique username, this cannot be left blank
     username = Column(String(80), unique=True, nullable=False)
     # unique email
     email = Column(String(100), unique=True, nullable=False)
