@@ -17,7 +17,7 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:password@localhost/jobquest_dev'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:password@localhost/jobquest_test'
 
 class ProductionConfig(Config):
     DEBUG = False
