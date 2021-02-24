@@ -98,3 +98,10 @@ class GetQuestsTest(unittest.TestCase):
         assert_payload_field_type_value(self, quest_data, 'type', str, self.quest_1.type)
         assert_payload_field_type_value(self, quest_data, 'xp', int, self.quest_1.xp)
         assert_payload_field_type_value(self, quest_data, 'level', int, self.quest_1.level)
+
+    def test_sad_path_get_quests_for_user_no_params(self):
+        response = self.client.get(f"/api/v1/users/{self.user_1.id}/quests", content_type='application/json')
+
+        self.assertEqual(500, response.status_code)
+
+        # Come back and add in error messaging later
