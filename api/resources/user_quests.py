@@ -45,10 +45,10 @@ class UserQuestsResource(Resource):
 
     def get(self, *args, **kwargs):
         user_id = request.view_args['user_id']
-        completion_status = request.args['completion_status']
         quests = {}
 
         try:
+            completion_status = request.args['completion_status']
             user = User.query.filter_by(id=user_id).one()
             user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
             for user_quest in user_quests:
@@ -63,6 +63,9 @@ class UserQuestsResource(Resource):
 
         except NoResultFound:
             return abort(404)
+
+        except BadRequestKeyError:
+            return abort()
 
         user_quest_payload = _user_quest_payload(quests)
         # user_quest_payload['success'] = True
