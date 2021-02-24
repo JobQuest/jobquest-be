@@ -3,7 +3,7 @@ import json
 from flask import jsonify
 
 import bleach
-import jsons
+# import jsons
 from flask import request
 from flask_restful import Resource, abort, reqparse, fields, marshal_with
 from sqlalchemy.orm.exc import NoResultFound
