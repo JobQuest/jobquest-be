@@ -112,7 +112,6 @@ class Quest(db.Model):
         self.level = level
 
 
-
 class UserQuest(db.Model):
     """
     UserQuest Model

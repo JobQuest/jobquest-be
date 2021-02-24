@@ -7,7 +7,6 @@ from config import config
 
 db = SQLAlchemy()
 
-
 class ExtendedAPI(Api):
     """
     credit to https://stackoverflow.com/a/57921890
@@ -79,7 +78,9 @@ def create_app(config_name='default'):
         }), 404
 
     from api.resources.users import UserResource
+    from api.resources.user_quests import UserQuestsResource
 
     api.add_resource(UserResource, '/api/v1/users')
+    api.add_resource(UserQuestsResource, '/api/v1/users/<int:user_id>/quests')
 
     return app
