@@ -35,7 +35,7 @@ class GetQuestsTest(unittest.TestCase):
         db_drop_everything(db)
         self.app_context.pop()
 
-    def test_happy_path_get_quests_for_user(self):
+    def test_happy_path_get_quests_for_user_true(self):
         response = self.client.get(f'/api/v1/users/{self.user_1.id}/quests?completion_status=true', content_type='application/json')
 
         self.assertEqual(200, response.status_code)
@@ -66,3 +66,35 @@ class GetQuestsTest(unittest.TestCase):
         assert_payload_field_type_value(self, quest_data, 'type', str, self.quest_2.type)
         assert_payload_field_type_value(self, quest_data, 'xp', int, self.quest_2.xp)
         assert_payload_field_type_value(self, quest_data, 'level', int, self.quest_2.level)
+
+    def test_happy_path_get_quests_for_user_false(self):
+        response = self.client.get(f'/api/v1/users/{self.user_1.id}/quests?completion_status=false', content_type='application/json')
+
+        self.assertEqual(200, response.status_code)
+
+        data = json.loads(response.data.decode('utf-8'))
+
+        assert_payload_field_type(self, data, 'data', dict)
+
+        all_quest_data = data['data']
+
+        assert_payload_field_type_value(self, all_quest_data, 'id', str, 'Null')
+        assert_payload_field_type_value(self, all_quest_data, 'type', str, 'quests')
+
+        attributes = all_quest_data['attributes']
+
+        assert_payload_field_type(self, attributes, 'quests', list)
+
+        quest = attributes['quests'][0]
+
+        assert_payload_field_type(self, quest, 'quest_id_1', dict)
+
+        quest_data = quest['quest_id_1']
+
+        assert_payload_field_type_value(self, quest_data, 'encounter_req', int, self.quest_1.encounter_req)
+        assert_payload_field_type_value(self, quest_data, 'id', int, self.quest_1.id)
+        assert_payload_field_type_value(self, quest_data, 'name', str, self.quest_1.name)
+        assert_payload_field_type_value(self, quest_data, 'progress', int, self.user_quest_1.progress)
+        assert_payload_field_type_value(self, quest_data, 'type', str, self.quest_1.type)
+        assert_payload_field_type_value(self, quest_data, 'xp', int, self.quest_1.xp)
+        assert_payload_field_type_value(self, quest_data, 'level', int, self.quest_1.level)
