@@ -3,7 +3,6 @@ import json
 from flask import jsonify
 
 import bleach
-# import jsons
 from flask import request
 from flask_restful import Resource, abort, reqparse, fields, marshal_with
 from sqlalchemy.orm.exc import NoResultFound
@@ -13,13 +12,9 @@ from api.database.models import Quest
 from api.database.models import User
 from api.database.models import UserQuest
 
-# def _format_quests(quests):
-#     map(json.dumps, quests)
-
 def _user_quest_payload(quests):
     quest_objects = {}
     for progress, quest in quests.items():
-        # breakpoint()
         quest_objects[f"quest_id_{quest.id}"] = {
             'id': quest.id,
             'type': quest.type,
@@ -29,8 +24,7 @@ def _user_quest_payload(quests):
             'level': quest.level,
             'progress': int(progress)
         }
-    # return {'data': quest_objects}
-    # breakpoint()
+
     return {
         'data': {
             'id': 'Null',
@@ -54,12 +48,7 @@ class UserQuestsResource(Resource):
             for user_quest in user_quests:
                 progress = user_quest.progress
                 quest_id = user_quest.quest_id
-                # quests.append(Quest.query.filter_by(id=quest_id).one())
                 quests[str(progress)] = Quest.query.filter_by(id=quest_id).one()
-                # breakpoint()
-
-                # breakpoint()
-                # quests.append(Quest.query.filter_by(id=quest_id).one())
 
         except NoResultFound:
             return abort(404)
@@ -68,5 +57,4 @@ class UserQuestsResource(Resource):
             return abort()
 
         user_quest_payload = _user_quest_payload(quests)
-        # user_quest_payload['success'] = True
         return user_quest_payload, 200
