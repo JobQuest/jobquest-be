@@ -78,9 +78,8 @@ def create_app(config_name='default'):
             "message": "resource not found"
         }), 404
 
-    from api.resources.users import UsersResource, UserResource
+    from api.resources.users import UserResource
 
-    api.add_resource(UserResource, '/api/v1/users/<user_id>')
-    api.add_resource(UsersResource, '/api/v1/users')
+    api.add_resource(UserResource, '/api/v1/users')
 
     return app
