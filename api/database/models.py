@@ -3,7 +3,6 @@ from sqlalchemy import Column, String, Integer, Boolean, DateTime, ForeignKey
 from datetime import datetime
 from api import db
 
-
 class User(db.Model):
     """
     User Model
@@ -111,8 +110,6 @@ class Quest(db.Model):
         self.type = type
         self.level = level
 
-
-
 class UserQuest(db.Model):
     """
     UserQuest Model
@@ -138,12 +135,10 @@ class UserQuest(db.Model):
     quests = db.relationship('Quest', backref='quest')
 
     def __init__(self, quest_id, user_id, completion_status, progress):
-
         self.quest_id = quest_id
         self.user_id = user_id
         self.completion_status = completion_status
         self.progress = progress
-
 
     def update(self):
         """
@@ -183,14 +178,12 @@ class Encounter(db.Model):
         self.quest_id = quest_id
         self.progress = progress
 
-
     def update(self):
         """
         updates a new model into a database
         the model must exist in the database
         """
         db.session.commit()
-
 
 class Action(db.Model):
     """
@@ -214,7 +207,6 @@ class Action(db.Model):
             description = bleach.clean(description).strip()
             if description == '':
                 description = None
-
 
         self.description = description
         self.encounter_id = encounter_id
