@@ -1,6 +1,6 @@
 language: python
 python:
-- '3.9.1'
+- 3.9.1
 services:
 - postgresql
 addons:
@@ -16,12 +16,12 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: xZ5MlpYwUoNn4FaU7HJmHHVpUeAe6aTdH5XMi0jEFB23c4tuy8RHbGeilnQwrWYnXIX+kkqeG6rHClQ8BZQdLmXAjbuunQ18ukmZbRnqoSXtN/dOb2Ed4Dki+qn9rv0e8lEN3NChnjB/rSZrn29qgunTeuvGyfUxcpPYGi9dhS6tscQIz2r3tJjXPlVYIY1rM8pheaf5rOrobwQkoQ/6X9Jcmwta7NxanvVgO2d0865RO6jo6s65/iHH2oXaLY3YqKQvhsYpXcq+ql/9CIeD8pq77kEcOPOF2xpkmSI5N/WKK3HRZzKyKTqSovicWvcxEjR7yHSvvN1DIJWxHf11S5EjCkwUukNcyghYhfulXNgQZcmTLntrSp2KmfHwoe11K0k+XkXPWyX5osioR073jKWx+e/UkfNFYUsLCT/6l6P+Fm1SQeU3N/esTZxmCyVEYNeAtaoxKa7Bm4e5sRZDZ5BvtGwi+HzC4d6Lx7h7pYK/JNtcrIHAMrPOwsxCFD9nLY0YZUwS+xYGQBAcS0OynfCri8a+Ccu0AXfnivoDra/vJRMJB/IphTFB13wcnxPkgcEqovBb+uYOcQPFlK+OFU1qVgxGz+JJmjfV8PqPUgIk+frc4p4HZUI4m85wLT8dVI1jWxvDg6l0bjT1PCS3R1+gF7FDK4StC4cqROi1AiI=
+    secure: QLkV8IlGz4OcXVgYNwBjQ2RCfmrA9rwtr5jpVzhmojdTzem6XIMVf4SJ1eWmGOsPB0Q1OsCqb52MPrzpqo0dRZ6EFC0bnXWmX+nmvy4Fh4eS4F8qOUBdpMg1moT8nFMvzQcLi6tJ+hL6nMdJ6Zx4kuN+VQM/2peVdW//AGpCWRYwoC+TPh91WAB7ts9H/ob0feoUMeUWxnU7GzJ7mOy0g8W3GMbF1q0pjpCv2DmsFz7eZlaq4F28T2uswhuq1D3pfjMH4m6hk+4X0yW8Ze6QaSbh5YRmRG5KGgJd+MFBbIvXSqukUEDM6uyqb99lXRzVfMumcsPKYd/YlD4m3uPKCfzP5tcYOlXHTv3vM+Lu8/oHZN01Lj1fSwhsq4RBZybf7XYCQ3REL7mtbv8Wt4Wy4BjCC/XqRHOf1RCCM3e0A+cFVkInk7Iy6iDR5ZD1BJmzJ1A9kfdmYxRqz6K7kXGwZ0M0TDKF5AVwhUSSkpWvSwMoZcw1VSwgTSFPF3YaBnCfNWKBKYctpCub9d1MBhOQVNVqfCZp1Aqe1tCxVgQgMk8p0EuXJQtE+62uy6SAp6clgSp0TSf+hMKBb83hGyd0njPSFs2SO6u/AsCoIGhEZ412guYSrs/WCQijgWES1dVfXhY/D44eGhsFQOVVv6mc+4m0bpc4ZTZ0KdwwURF1ejg=
   app: job-quest-be
   on:
     repo: JobQuest/jobquest-be
     branch: main
   skip_cleanup: 'true'
   run:
-    - pip install -r requirements.txt
-    - python manage.py db upgrade
+  - pip install -r requirements.txt
+  - python manage.py db upgrade
