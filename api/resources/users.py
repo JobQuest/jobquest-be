@@ -86,5 +86,5 @@ class UserResource(Resource):
             return abort(404)
 
         users_payload = _users_payload(users)
-        users_payload['sucess'] = True
+        users_payload['success'] = True
         return users_payload, 200
