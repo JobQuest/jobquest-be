@@ -44,7 +44,7 @@ class UserResource(Resource):
     this Resource file is for our /users endpoints which don't require
     a resource ID in the URI path
     """
-    def get(self, *args, **kwargs):
+    def post(self, *args, **kwargs):
         data = request.get_json()
         user_email = data['email']
         try:

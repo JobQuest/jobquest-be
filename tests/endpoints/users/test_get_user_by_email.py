@@ -31,7 +31,7 @@ class GetUserTest(unittest.TestCase):
 
     def test_happypath_get_a_user_by_email(self):
         payload = deepcopy(self.payload)
-        response = self.client.get(
+        response = self.client.post(
                     '/api/v1/users', json=payload,
                     content_type='application/json'
                 )
@@ -69,7 +69,7 @@ class GetUserTest(unittest.TestCase):
 
     def test_endpoint_sadpath_bad_email_user(self):
         payload = {'email': 'bademail'}
-        response = self.client.get(
+        response = self.client.post(
                 '/api/v1/users', json=payload,
                 content_type='application/json'
             )
