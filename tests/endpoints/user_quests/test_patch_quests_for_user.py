@@ -44,3 +44,17 @@ class PatchQuestsTest(unittest.TestCase):
 				response = self.client.patch(f'/api/v1/users/{self.user_1.id}/quests', json=payload, content_type='application/json')
 
 				self.assertEqual(201, response.status_code)
+				data = json.loads(response.data.decode('utf-8'))
+				assert_payload_field_type(self, data, 'data', dict)
+
+				all_user_quest_data = data['data']
+
+				assert_payload_field_type_value(self, all_user_quest_data, 'id', int, self.user_quest_1.id)
+				assert_payload_field_type_value(self, all_user_quest_data, 'type', str, 'user_quests')
+				assert_payload_field_type(self, all_user_quest_data, 'attributes', dict)
+				
+				attributes = all_user_quest_data['attributes']
+
+				assert_payload_field_type_value(self, attributes, 'response', str, 'successful')
+				assert_payload_field_type_value(self, attributes, 'progress', int, int(payload['progress']))
+				assert_payload_field_type_value(self, attributes, 'completion_status', bool, False)
