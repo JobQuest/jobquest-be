@@ -44,6 +44,8 @@
 
 ## Schema
 
+![Screen Shot 2021-02-25 at 10 51 19 AM](https://user-images.githubusercontent.com/62966396/109195377-ac35d000-7757-11eb-9753-31148d771b35.png)
+
 ## Dependencies
 
 ## Testing
