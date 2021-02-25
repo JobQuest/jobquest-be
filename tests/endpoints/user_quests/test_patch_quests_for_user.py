@@ -82,3 +82,11 @@ class PatchQuestsTest(unittest.TestCase):
 				assert_payload_field_type_value(self, attributes, 'response', str, 'successful')
 				assert_payload_field_type_value(self, attributes, 'progress', int, int(payload2['progress']))
 				assert_payload_field_type_value(self, attributes, 'completion_status', bool, True)
+
+		def test_sad_path_get_quests_for_user_no_params(self):
+				response = self.client.patch(f"/api/v1/users/{self.user_1.id}/quests", content_type='application/json')
+
+				self.assertEqual(400, response.status_code)
+
+				# Come back and add in error messaging later
+		
