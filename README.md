@@ -19,6 +19,29 @@
 
 ## API Contract
 
+### GET `/api/v1/users`
+
+<img width="1018" alt="Screen Shot 2021-02-25 at 9 36 00 AM" src="https://user-images.githubusercontent.com/62966396/109190551-6b878800-7752-11eb-9379-e599e0fd620a.png">
+
+
+### unsuccessful response: with no email in the db:
+<img width="1017" alt="Screen Shot 2021-02-25 at 9 36 28 AM" src="https://user-images.githubusercontent.com/62966396/109190217-1c415780-7752-11eb-8b7f-74a37162faf6.png">
+
+### GET `/api/v1/users/1/quests/completion_status=false`
+
+<img width="1014" alt="Screen Shot 2021-02-25 at 9 40 57 AM" src="https://user-images.githubusercontent.com/62966396/109189596-6d9d1700-7751-11eb-9fd9-937d3a214627.png">
+
+
+### GET `/api/v1/users/1/quests/completion_status=true`
+
+<img width="1014" alt="Screen Shot 2021-02-25 at 9 39 44 AM" src="https://user-images.githubusercontent.com/62966396/109190060-f1570380-7751-11eb-936f-e4dab1b3892e.png">
+
+
+
+### PATCH `/api/v1/users/1/quests`
+
+![Screen Shot 2021-02-24 at 6 31 44 PM](https://user-images.githubusercontent.com/60531761/109089533-a9db6380-76ce-11eb-9d88-f7c39cf224b0.png)
+
 ## Schema
 
 ## Dependencies
