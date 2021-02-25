@@ -35,6 +35,19 @@ def _user_quest_payload(quests):
         }
     }
 
+def _patched_user_quest_payload(user_quest):
+    return {
+        'data': {
+            'id': user_quest.id,
+            'type': 'user_quests',
+            'attributes': {
+                 'response': 'successful',
+                 'progress': user_quest.progress,
+                 'completion_status': user_quest.completion_status
+            }
+        }
+    }
+
 class UserQuestsResource(Resource):
 
     def get(self, *args, **kwargs):
@@ -58,3 +71,26 @@ class UserQuestsResource(Resource):
 
         user_quest_payload = _user_quest_payload(quests)
         return user_quest_payload, 200
+
+    def patch(self, *args, **kwargs):
+        user_id = request.view_args['user_id']
+        data = request.get_json()
+
+        try:
+            user = User.query.filter_by(id=user_id).one()
+            user_quest = user.user_quests.filter_by(quest_id=data['quest_id']).one()
+            quest = Quest.query.filter_by(id=user_quest.quest_id).one()
+            user_quest.progress = data['progress']
+            db.session.add(user_quest)
+            db.session.commit()
+            if user_quest.progress > quest.encounter_req:
+                user_quest.completion_status = True
+                db.session.add(user_quest)
+                db.session.commit()
+            
+
+        except NoResultFound:
+            return abort(404)
+
+        patched_user_quest_payload = _patched_user_quest_payload(user_quest)
+        return patched_user_quest_payload, 201
