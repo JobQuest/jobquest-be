@@ -105,3 +105,14 @@ class GetQuestsTest(unittest.TestCase):
         self.assertEqual(500, response.status_code)
 
         # Come back and add in error messaging later
+
+    def test_for_user_without_user_quests(self):
+        new_user = User(username='Billy', email="billy@example.com", xp=0)
+        user_quests = new_user.user_quests.all().__len__()
+        self.assertEqual(0, user_quests)
+
+        response = self.client.get(f'/api/v1/users/{new_user.id}/quests?completion_status=false', content_type='application/json')
+
+        user_quests = new_user.user_quests.all().__len__()
+
+        self.assertEqual(3, user_quests)
