@@ -19,13 +19,18 @@
 
 ## API Contract
 
+### POST `/api/v1/users`
+
+<img width="1015" alt="Screen Shot 2021-02-25 at 6 04 29 PM" src="https://user-images.githubusercontent.com/62966396/109249903-da420100-77a5-11eb-8e8b-38101978d1c8.png">
+
 ### GET `/api/v1/users`
 
-<img width="1018" alt="Screen Shot 2021-02-25 at 9 36 00 AM" src="https://user-images.githubusercontent.com/62966396/109190551-6b878800-7752-11eb-9379-e599e0fd620a.png">
+<img width="1077" alt="Screen Shot 2021-02-25 at 6 13 31 PM" src="https://user-images.githubusercontent.com/62966396/109249645-5ab43200-77a5-11eb-9047-7e607c17f098.png">
 
 
 ### unsuccessful response: with no email in the db:
-<img width="1017" alt="Screen Shot 2021-02-25 at 9 36 28 AM" src="https://user-images.githubusercontent.com/62966396/109190217-1c415780-7752-11eb-8b7f-74a37162faf6.png">
+
+<img width="1083" alt="Screen Shot 2021-02-25 at 8 14 59 PM" src="https://user-images.githubusercontent.com/62966396/109250112-4f153b00-77a6-11eb-9990-55d93512b4bd.png">
 
 ### GET `/api/v1/users/1/quests/completion_status=false`
 
