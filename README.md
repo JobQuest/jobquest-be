@@ -66,17 +66,38 @@
 
 These are the contributors with whom without their imagination, hardwork and dedication this project would not have happened. We are all really excited to talk more about our project with you! Feel free to reach out to us!
 
+<img src="https://avatars.githubusercontent.com/u/4582791?v=4v" alt="Shaunda Cunningham"
+ width="150" height="auto" />
+
 #### Shaunda Cunningham: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/shaunda-cunningham/), [📬](mailto:shaunda.cunningham@gmail.com), [GitHub](https://github.com/smcunning)
 
+<img src="https://avatars.githubusercontent.com/u/62966396?v=4" alt="George Soderholm"
+ width="150" height="auto" />
+ 
 #### George Soderholm: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/george-soderholm-05776947/), [📬](mailto:georgesoderholm@gmail.com), [GitHub](https://github.com/GeorgieGirl24)
+
+<img src="https://avatars0.githubusercontent.com/u/66269306?s=400&u=b59f8ccc1002269319d952aa028ee270629b2ead&v=4" alt="Olga Morgan"
+ width="150" height="auto" />
 
 #### Olga Morgan: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/olgamorgan/), [📬](mailto:olga.morgan17@gmail.com), [GitHub](https://github.com/scripka)
 
+<img src="https://avatars.githubusercontent.com/u/60531761?v=4" alt="Jake Heft"
+ width="150" height="auto" />
+
 #### Jake Heft: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/jakeheft/), [📬](mailto:Jakeheft@gmail.com), [GitHub](https://github.com/jakeheft)
 
-#### Caleb Cyphers:  [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/caleb-cyphers/), [📬](mailto:caleb.j.cyphers@gmail.com), [GitHub]()
+<img src="https://avatars.githubusercontent.com/u/36242106?v=4" alt="Caleb Cyphers"
+ width="150" height="auto" />
+
+#### Caleb Cyphers:  [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/caleb-cyphers/), [📬](mailto:caleb.j.cyphers@gmail.com), [GitHub](https://github.com/CalebCyphers)
+
+<img src="https://avatars.githubusercontent.com/u/60277914?v=4" alt="Curis Bartell"
+ width="150" height="auto" />
 
 #### Curtis Bartell: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/curtis-bartell/), [📬](mailto:cbartell980@gmail.com), [GitHub](https://github.com/c-bartell)
+
+<img src="https://avatars.githubusercontent.com/u/65981543?v=4" alt="Carson Jardine"
+ width="150" height="auto" />
 
 #### Carson Jardine: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/carson-jardine/), [📬](mailto:carsonjardine@gmail.com), [GitHub](https://github.com/carson-jardine)
 [![GitHubLogo][gitHub-sheild]](https://github.com/carson-jardine)
