@@ -66,4 +66,12 @@ class GetEncountersByQuest(unittest.TestCase):
         actions = attributes['actions']
         assert_payload_field_type_value(self, actions[0], 'id', int, self.action_3.id)
         assert_payload_field_type_value(self, actions[0], 'description', str, self.action_3.description)
-        
+
+    def test_sad_path_get_encounters_for_quest_when_no_progress_given(self):
+        response = self.client.get(f'/api/v1/quests/{self.quest_1.id}/encounters?progress=', content_type='application/json')
+        self.assertEqual(500, response.status_code)
+
+    def test_sad_path_get_encounters_for_quest_when_wrong_progress_given(self):
+        response = self.client.get(
+            f'/api/v1/quests/{self.quest_1.id}/encounters?progress=896', content_type='application/json')
+        self.assertEqual(404, response.status_code)
