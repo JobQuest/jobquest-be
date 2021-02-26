@@ -96,7 +96,9 @@ class UserQuestsResource(Resource):
             db.session.commit()
             if user_quest.progress > quest.encounter_req:
                 user_quest.completion_status = True
+                user.xp += quest.xp
                 db.session.add(user_quest)
+                db.session.add(user)
                 db.session.commit()
 
 
