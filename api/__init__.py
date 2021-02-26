@@ -79,8 +79,10 @@ def create_app(config_name='default'):
 
     from api.resources.users import UserResource
     from api.resources.user_quests import UserQuestsResource
+    from api.resources.quests import QuestResource
 
     api.add_resource(UserResource, '/api/v1/users')
     api.add_resource(UserQuestsResource, '/api/v1/users/<int:user_id>/quests')
+    api.add_resource(QuestResource, '/api/v1/quests/<int:quest_id>/encounters')
 
     return app

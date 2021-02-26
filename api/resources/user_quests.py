@@ -87,7 +87,7 @@ class UserQuestsResource(Resource):
                 user_quest.completion_status = True
                 db.session.add(user_quest)
                 db.session.commit()
-            
+
 
         except NoResultFound:
             return abort(404)
