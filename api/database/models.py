@@ -92,6 +92,7 @@ class Quest(db.Model):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     # relationships
     user_quests = db.relationship('UserQuest', backref='user_quest', lazy='dynamic')
+    encounters = db.relationship('Encounter', backref='encounters', lazy='dynamic')
 
     def __init__(self, name, xp, encounter_req, type, level):
         if name is not None:

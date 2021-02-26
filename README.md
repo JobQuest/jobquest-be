@@ -41,6 +41,10 @@
 ### PATCH `/api/v1/users/1/quests`
 <img width="1017" alt="Screen Shot 2021-02-25 at 11 03 46 AM" src="https://user-images.githubusercontent.com/62966396/109201856-8ca2a580-775f-11eb-8b6f-eb59eb5e76c4.png">
 
+
+### GET `/api/v1/quests/1/encounters?progress=1`
+<img width="1017" alt="Screen Shot 2021-02-25 at 8 10 28 PM" src="https://user-images.githubusercontent.com/60531761/109249226-8682e800-77a4-11eb-8f06-07f48e5a0d22.png">
+
 ## Schema
 
 ![Screen Shot 2021-02-25 at 10 51 19 AM](https://user-images.githubusercontent.com/62966396/109195377-ac35d000-7757-11eb-9753-31148d771b35.png)
