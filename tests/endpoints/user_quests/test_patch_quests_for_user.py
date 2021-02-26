@@ -39,6 +39,10 @@ class PatchQuestsTest(unittest.TestCase):
 						'quest_id': str(self.quest_2.id),
 						'progress': str(2)
 		}
+		self.payload3 = {
+						'quest_id': str(self.quest_3.id),
+						'progress': str(3)
+		}
 
 	def tearDown(self):
 		db.session.remove()
@@ -116,3 +120,20 @@ class PatchQuestsTest(unittest.TestCase):
 		self.assertEqual(self.quest_3.level, quest.level)
 		self.assertEqual(self.quest_3.name, quest.name)
 		self.assertEqual(self.quest_3.type, quest.type)
+
+	# def test_when_user_completes_all_levels_of_quest_path(self):
+	# 	payload3 = deepcopy(self.payload3)
+	# 	response = self.client.patch(f'/api/v1/users/{self.user_1.id}/quests', json=payload3, content_type='application/json')
+	#
+	# 	user_quests_total = self.user_1.user_quests.all().__len__()
+	# 	self.assertEqual(4, user_quests_total)
+	#
+	# 	new_user_quest = self.user_1.user_quests.all()[-1]
+	# 	self.assertEqual(1, new_user_quest.quest_id)
+	#
+	# 	quest = Quest.query.filter_by(id=new_user_quest.quest_id).one()
+	# 	self.assertEqual(self.quest_1.level, quest.level)
+	# 	self.assertEqual(self.quest_1.name, quest.name)
+	# 	self.assertEqual(self.quest_1.type, quest.type)
+	#
+	# Tabled 
