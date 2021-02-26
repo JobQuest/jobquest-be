@@ -46,9 +46,9 @@ class QuestResource(Resource):
             progress = request.args['progress']
             quest = Quest.query.filter_by(id=quest_id).one()
             encounter = quest.encounters.filter_by(progress=progress).one()
-            # breakpoint()
-        except Exception:
-            abort()
+
+        except NoResultFound:
+            return abort(404)
 
         quest_encounters_payload = _quest_encounters_payload(encounter)
         return quest_encounters_payload, 200
