@@ -39,11 +39,34 @@ def _user_payload(user):
         }
     }
 
+def _serial_users(users):
+    serializable_users = []
+
+    for user in users:
+        serializable_users.append({
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+            'xp': user.xp
+        })
+
+    return serializable_users
+
+def _users_payload(users):
+    return {
+        'data': {
+            'id': None,
+            'type': 'users',
+            'attributes': _serial_users(users)
+        }
+    }
+
 class UserResource(Resource):
     """
     this Resource file is for our /users endpoints which don't require
     a resource ID in the URI path
     """
+
     def post(self, *args, **kwargs):
         data = request.get_json()
         user_email = data['email']
@@ -55,3 +78,13 @@ class UserResource(Resource):
         user_payload = _user_payload(user)
         user_payload['success'] = True
         return user_payload, 200
+
+    def get(self):
+        try:
+            users = User.query.all()
+        except NoResultFound:
+            return abort(404)
+
+        users_payload = _users_payload(users)
+        users_payload['success'] = True
+        return users_payload, 200
