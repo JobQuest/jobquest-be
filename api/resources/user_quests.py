@@ -58,6 +58,17 @@ class UserQuestsResource(Resource):
             completion_status = request.args['completion_status']
             user = User.query.filter_by(id=user_id).one()
             user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
+
+            if user_quests.__len__() == 0:
+                one = UserQuest(quest_id=1, user_id=user.id, completion_status=False, progress=1)
+                two = UserQuest(quest_id=4, user_id=user.id, completion_status=False, progress=1)
+                three = UserQuest(quest_id=7, user_id=user.id, completion_status=False, progress=1)
+                db.session.add(one)
+                db.session.add(two)
+                db.session.add(three)
+                db.session.commit()
+                user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
+
             for user_quest in user_quests:
                 progress = user_quest.progress
                 quest_id = user_quest.quest_id
