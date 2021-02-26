@@ -19,10 +19,22 @@ class GetQuestsTest(unittest.TestCase):
         self.user_1.insert()
         self.quest_1 = Quest(name="Make'a da pancake!", xp=5, level=1, encounter_req=3, type='active')
         self.quest_2 = Quest(name="Make'a da biscuit!", xp=10, level=2, encounter_req=3, type='active')
+        self.quest_3 = Quest(name="Make'a da nuggets!", xp=10, level=2, encounter_req=3, type='active')
+        self.quest_4 = Quest(name="Make'a da cupcake!", xp=10, level=2, encounter_req=3, type='passive')
+        self.quest_5 = Quest(name="Make'a da pizza!", xp=10, level=2, encounter_req=3, type='passive')
+        self.quest_6 = Quest(name="Make'a da bacon!", xp=10, level=2, encounter_req=3, type='passive')
+        self.quest_7 = Quest(name="Make'a da pie!", xp=10, level=2, encounter_req=3, type='supportive')
         db.session.add(self.quest_1)
         db.session.commit()
         db.session.add(self.quest_2)
         db.session.commit()
+        db.session.add(self.quest_3)
+        db.session.add(self.quest_4)
+        db.session.add(self.quest_5)
+        db.session.add(self.quest_6)
+        db.session.add(self.quest_7)
+        db.session.commit()
+
         self.user_quest_1 = UserQuest(quest_id=self.quest_1.id, user_id=self.user_1.id, progress=1, completion_status=False)
         self.user_quest_2 = UserQuest(quest_id=self.quest_2.id, user_id=self.user_1.id, progress=1, completion_status=True)
         db.session.add(self.user_quest_1)
@@ -105,3 +117,18 @@ class GetQuestsTest(unittest.TestCase):
         self.assertEqual(500, response.status_code)
 
         # Come back and add in error messaging later
+
+    def test_for_user_without_user_quests(self):
+        new_user = User(username='Billy', email="billy@example.com", xp=0)
+        db.session.add(new_user)
+        db.session.commit()
+
+        user_quests = new_user.user_quests.all().__len__()
+
+        self.assertEqual(0, user_quests)
+
+        response = self.client.get(f'/api/v1/users/{new_user.id}/quests?completion_status=false', content_type='application/json')
+
+        user_quests = new_user.user_quests.all().__len__()
+
+        self.assertEqual(3, user_quests)
