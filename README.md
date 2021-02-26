@@ -39,8 +39,7 @@
 
 
 ### PATCH `/api/v1/users/1/quests`
-
-![Screen Shot 2021-02-24 at 6 31 44 PM](https://user-images.githubusercontent.com/60531761/109089533-a9db6380-76ce-11eb-9d88-f7c39cf224b0.png)
+<img width="1017" alt="Screen Shot 2021-02-25 at 11 03 46 AM" src="https://user-images.githubusercontent.com/62966396/109201856-8ca2a580-775f-11eb-8b6f-eb59eb5e76c4.png">
 
 ## Schema
 
