@@ -17,7 +17,7 @@ from api.database.models import Action
 def _quest_encounters_payload(encounter):
     return {
         'data': {
-            'id': None,
+            'id': encounter.id,
             'type': 'encounters',
             'attributes': {
                 'progress': encounter.progress,
