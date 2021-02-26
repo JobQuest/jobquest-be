@@ -52,4 +52,18 @@ class GetEncountersByQuest(unittest.TestCase):
 
     def test_happy_path_get_encounters_for_quest_by_progress(self):
         response = self.client.get(f'/api/v1/quests/{self.quest_1.id}/encounters?progress=2', content_type='application/json')
-        breakpoint()
+        self.assertEqual(200, response.status_code)
+        data = json.loads(response.data.decode('utf-8'))
+        assert_payload_field_type(self, data, 'data', dict)
+        encounter_data = data['data']
+        assert_payload_field_type_value(self, encounter_data, 'id', int, self.encounter_2.id)
+        assert_payload_field_type_value(self, encounter_data, 'type', str, 'encounters')
+        attributes = encounter_data['attributes']
+        assert_payload_field_type(self, encounter_data, 'attributes', dict)
+        assert_payload_field_type_value(self, attributes, 'progress', int, self.encounter_2.progress)
+        assert_payload_field_type_value(self, attributes, 'monster_image', str, self.encounter_2.monster_image)
+        assert_payload_field_type(self, attributes, 'actions', list)
+        actions = attributes['actions']
+        assert_payload_field_type_value(self, actions[0], 'id', int, self.action_3.id)
+        assert_payload_field_type_value(self, actions[0], 'description', str, self.action_3.description)
+        
