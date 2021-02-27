@@ -19,10 +19,10 @@ def _user_quest_payload(quests):
 
     return {
         'data': {
-        'id': 'Null',
-        'type': 'quests',
-        'attributes': {
-            "quests": serializable_user_quests
+            'id': 'Null',
+            'type': 'quests',
+            'attributes': {
+                "quests": serializable_user_quests
             }
         }
     }
