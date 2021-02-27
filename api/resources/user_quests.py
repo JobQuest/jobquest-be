@@ -8,9 +8,10 @@ from flask_restful import Resource, abort, reqparse, fields, marshal_with
 from sqlalchemy.orm.exc import NoResultFound
 
 from api import db
-from api.database.models import Quest
-from api.database.models import User
-from api.database.models import UserQuest
+from api.database.models_object.quests import Quest
+from api.database.models_object.users import User
+from api.database.models_object.user_quests import UserQuest
+# from api.database.models import UserQuest
 
 def _user_quest_payload(quests):
     quest_objects = {}
