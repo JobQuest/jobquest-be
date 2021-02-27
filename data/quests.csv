@@ -1,0 +1,10 @@
+id,name,xp,encounter_req,type,level
+1,Smash the Eye Monster,200,1,active,1
+2,Stomp the Man-Eating Worm,500,3,active,2
+3,Slay the Evil Fire Wizard,1000,5,active,3
+4,Slay the Diabolical Worm,200,1,passive,1
+5,Slay the Chareng,500,3,passive,2
+6,Slay the Necromancer,1000,5,passive,3
+7,Desintigrate the Cipactli,200,1,supportive,1
+8,Destroy the Evil Mushroom,500,3,supportive,2
+9,Smash the Walking Skeleton,1000,5,supportive,3

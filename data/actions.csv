@@ -1,0 +1,55 @@
+id,encounter_id,description
+1,1,Send a message to a recruiter
+2,1,Schedule a coffee chat with a person from your target company
+3,2,Add a contact at a target company on LinkedIn
+4,2,Make a LinkedIn Post
+5,3,Attend a networking event/meetup
+6,3,Make 5 new connections on LinkedIn
+7,4,Reach out to previous career contacts and let them know about your career change
+8,4,Write an article on a technical topic and post it on LinkedIn
+9,5,Find a Hackathon to join
+10,5,Find an open source project to contribute to
+11,6,Plan and schedule giving a talk at a meetup or networking event
+12,6,Start working on a passion project to showcase your skills
+13,7,Ask for feedback on your solution to a code challenge on social media
+14,7,Jump into an open source project
+15,8,Apply to a job
+16,8,Join a new MeetUp Group
+17,9,Attend a networking event
+18,9,Apply to a job
+19,10,"Formulate a comprehensive response for ""Tell me about yourself"" (Elevator Pitch)"
+20,10,Research the mission statement of a target company
+21,11,Ask a peer to review your resume
+22,11,Sign up for a new account on a code challenge site
+23,12,Practice your elevator pitch for 10 minutes
+24,12,Write a cover letter for with a specific company/role in mind
+25,13,Ask a peer to review your cover letter
+26,13,Do a data structure/algorithm challenge
+27,14,"Prepare a STAR response (Situation, Task, Action Result) to a behavioral question of your choice"
+28,14,Create or update your personal GitHub README
+29,15,Develop a list of 3 questions you want to ask a potential employer in an interview
+30,15,Practice a breathing or meditation exercise you can use before an interview
+31,16,Schedule a meeting with your mentor to discuss a career topic
+32,16,Pin the projects you are most proud of to your GitHub
+33,17,Complete a LinkedIn skills quiz for a related skill
+34,17,Customize your resume for a job you've researched
+35,18,Flesh out research of your top 10 companies you'd like to work for
+36,18,Practice how to 'gracefully exit' from a interview question you don't know
+37,19,Give a friend on LinkedIn an endorsement
+38,19,Offer to host a behavioral mock interview for someone
+39,20,Review a peer's cover letter or resume
+40,20,Give a peer a pep talk
+41,21,Volunteer your skillset to a worthwhile cause
+42,21,Walk through a technical challenge with a peer
+43,22,Find a job opportunity that suits one of your peers goals and send it to them
+44,22,Introduce your peer to someone you know in the industry
+45,23,Come up with an accountability plan between you and a peer
+46,23,Help someone else with one of their projects
+47,24,Invite someone to collaborate with you on a small project
+48,24,Offer to host a mock technical interview for someone
+49,25,Review a peer's code challenge solution
+50,25,Give a friend on LinkedIn an endorsement
+51,26,Find a job opportunity that suits one of your peers goals and send it to them
+52,26,Offer to host a mock technical interview for someone
+53,27,Give a peer a pep talk
+54,27,Review a peer's cover letter or resume
