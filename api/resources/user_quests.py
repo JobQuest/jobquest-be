@@ -59,7 +59,7 @@ class UserQuestsResource(Resource):
             user = User.query.filter_by(id=user_id).one()
             user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
 
-            if user_quests.__len__() == 0:
+            if user.user_quests.all().__len__() == 0:
                 one = UserQuest(quest_id=1, user_id=user.id, completion_status=False, progress=1)
                 two = UserQuest(quest_id=4, user_id=user.id, completion_status=False, progress=1)
                 three = UserQuest(quest_id=7, user_id=user.id, completion_status=False, progress=1)
