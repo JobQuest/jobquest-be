@@ -14,8 +14,8 @@ from api.database.models.user_quests import UserQuest
 
 def _user_quest_payload(quests):
     serializable_user_quests = []
-    for progress, quest in quests.items():
-        serializable_user_quests.append(_serialize_user_quest(quest, progress))
+    for quest in quests:
+        serializable_user_quests.append(_serialize_user_quest(quest[1], quest[0]))
 
     return {
         'data': {
@@ -55,12 +55,12 @@ class UserQuestsResource(Resource):
 
     def get(self, *args, **kwargs):
         user_id = request.view_args['user_id']
-        quests = {}
+        quests = []
 
         try:
             completion_status = request.args['completion_status']
             user = User.query.filter_by(id=user_id).one()
-            # user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
+            user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
 
             if user.user_quests.all().__len__() == 0:
                 one = UserQuest(quest_id=1, user_id=user.id, completion_status=False, progress=1)
@@ -70,13 +70,12 @@ class UserQuestsResource(Resource):
                 db.session.add(two)
                 db.session.add(three)
                 db.session.commit()
-            else
                 user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
 
             for user_quest in user_quests:
                 progress = user_quest.progress
                 quest_id = user_quest.quest_id
-                quests[str(progress)] = Quest.query.filter_by(id=quest_id).one()
+                quests.append([str(progress), user_quest.quests])
 
         except NoResultFound:
             return abort(404)
