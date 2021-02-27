@@ -7,6 +7,8 @@ from tests import db_drop_everything
 
 import csv
 import psycopg2
+import os
+import urllib.parse as urlparse
 
 app = create_app()
 migrate = Migrate(app, db)
@@ -37,7 +39,9 @@ def db_seed():
     george = User(username='george', email='george@example.com', xp=0)
 
     #quests
-    conn = psycopg2.connect("host=localhost dbname=jobquest_dev user=postgres")
+    url = urlparse.urlparse(os.environ.get('DATABASE_URL'))
+    host = url.hostname
+    conn = psycopg2.connect(f"host={host} dbname=jobquest_dev user=postgres")
     cur = conn.cursor()
     with open('./data/quests.csv', 'r') as f:
         reader = csv.reader(f)
@@ -50,7 +54,7 @@ def db_seed():
     conn.commit()
 
     #encounters
-    conn = psycopg2.connect("host=localhost dbname=jobquest_dev user=postgres")
+    conn = psycopg2.connect(f"host={host} dbname=jobquest_dev user=postgres")
     cur = conn.cursor()
     with open('./data/encounters.csv', 'r') as f:
         reader = csv.reader(f)
@@ -63,7 +67,7 @@ def db_seed():
     conn.commit()
 
     #actions
-    conn = psycopg2.connect("host=localhost dbname=jobquest_dev user=postgres")
+    conn = psycopg2.connect(f"host={host} dbname=jobquest_dev user=postgres")
     cur = conn.cursor()
     with open('./data/actions.csv', 'r') as f:
         reader = csv.reader(f)
