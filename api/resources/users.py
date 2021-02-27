@@ -8,7 +8,7 @@ from flask_restful import Resource, abort
 from sqlalchemy.orm.exc import NoResultFound
 
 from api import db
-from api.database.models import User
+from api.database.models.users import User
 
 
 def _validate_field(data, field, proceed, errors, missing_okay=False):

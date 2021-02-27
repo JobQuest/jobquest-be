@@ -2,7 +2,11 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
 from api import create_app, db
-from api.database.models import User, Quest, UserQuest, Encounter, Action
+from api.database.models.users import User
+from api.database.models.quests import Quest
+from api.database.models.user_quests import UserQuest
+from api.database.models.encounters import Encounter
+from api.database.models.actions import Action
 from tests import db_drop_everything
 
 import csv

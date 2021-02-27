@@ -3,7 +3,9 @@ import unittest
 from unittest.mock import patch
 from copy import deepcopy
 from api import create_app, db
-from api.database.models import UserQuest, User, Quest
+from api.database.models.users import User
+from api.database.models.quests import Quest
+from api.database.models.user_quests import UserQuest
 from tests import db_drop_everything, assert_payload_field_type_value, \
 		assert_payload_field_type
 
@@ -136,4 +138,4 @@ class PatchQuestsTest(unittest.TestCase):
 	# 	self.assertEqual(self.quest_1.name, quest.name)
 	# 	self.assertEqual(self.quest_1.type, quest.type)
 	#
-	# Tabled 
+	# Tabled
