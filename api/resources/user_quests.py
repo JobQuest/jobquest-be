@@ -13,27 +13,30 @@ from api.database.models.users import User
 from api.database.models.user_quests import UserQuest
 
 def _user_quest_payload(quests):
-    quest_objects = {}
-    for progress, quest in quests.items():
-        quest_objects[f"quest_id_{quest.id}"] = {
-            'id': quest.id,
-            'type': quest.type,
-            'name': quest.name,
-            'xp': quest.xp,
-            'encounter_req': quest.encounter_req,
-            'level': quest.level,
-            'progress': int(progress)
-        }
+    serializable_user_quests = []
+    for quest in quests:
+        serializable_user_quests.append(_serialize_user_quest(quest[1], quest[0]))
 
     return {
         'data': {
             'id': 'Null',
             'type': 'quests',
             'attributes': {
-                 "quests": [quest_objects]
+                "quests": serializable_user_quests
             }
         }
     }
+
+def _serialize_user_quest(quest, progress):
+    return { f"quest_id_{quest.id}": {
+        'id': quest.id,
+        'type': quest.type,
+        'name': quest.name,
+        'xp': quest.xp,
+        'encounter_req': quest.encounter_req,
+        'level': quest.level,
+        'progress': int(progress)
+    }}
 
 def _patched_user_quest_payload(user_quest):
     return {
@@ -52,7 +55,7 @@ class UserQuestsResource(Resource):
 
     def get(self, *args, **kwargs):
         user_id = request.view_args['user_id']
-        quests = {}
+        quests = []
 
         try:
             completion_status = request.args['completion_status']
@@ -72,7 +75,7 @@ class UserQuestsResource(Resource):
             for user_quest in user_quests:
                 progress = user_quest.progress
                 quest_id = user_quest.quest_id
-                quests[str(progress)] = Quest.query.filter_by(id=quest_id).one()
+                quests.append([str(progress), user_quest.quests])
 
         except NoResultFound:
             return abort(404)
