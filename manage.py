@@ -23,8 +23,6 @@ def db_seed():
     db_drop_everything(db)
     db.create_all()
 
-    # seed anything here we might need
-
     # users
     ian = User(username='iandouglas', email='ian.douglas@iandouglas.com', xp=0)
     shaunda = User(username='shaunda', email='shaunda@example.com', xp=300)
@@ -34,7 +32,7 @@ def db_seed():
     jake = User(username='jake', email='jake@example.com', xp=700)
     carson = User(username='carson', email='carson@example.com', xp=550)
     george = User(username='george', email='george@example.com', xp=900)
-    #
+
     # # quests
     catch_troll = Quest(name='Catch a Troll for the Town Wizard', xp=200, encounter_req=1, type='active', level=1)
     root_bandit = Quest(name='Root out the Craghook Bandits', xp=500, encounter_req=3, type='active', level=2)
@@ -43,33 +41,29 @@ def db_seed():
     quest_5 = Quest(name='quest5', xp=500, encounter_req=3, type='passive', level=2)
     quest_6 = Quest(name='quest6', xp=1000, encounter_req=5, type='passive', level=3)
     kill_the_wildabeast = Quest(name="Kill the Wildabeast", xp=200, encounter_req=1, type='supportive', level=1)
-    #
-    # # user_quests
+
+    # user_quests
     user_quest_1 = UserQuest(quest_id=1, user_id=1, completion_status=False, progress=1)
     user_quest_2 = UserQuest(quest_id=2, user_id=2, completion_status=False, progress=2)
     user_quest_3 = UserQuest(quest_id=3, user_id=3, completion_status=False, progress=1)
     user_quest_4 = UserQuest(quest_id=3, user_id=3, completion_status=False, progress=2)
     user_quest_5 = UserQuest(quest_id=3, user_id=3, completion_status=False, progress=3)
 
-    #
-    # # encounters
+    # encounters
     set_troll_bait = Encounter(monster_image='https://images.huffingtonpost.com/2015-02-05-trollersTroll-thumb.jpg', quest_id=1, progress=1)
     build_troll_trap = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=1, progress=1)
     knock_out = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=2, progress=1)
     trap = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=7, progress=1)
-
     kick_troll = Encounter(monster_image='https://images.huffingtonpost.com/2015-02-05-trollersTroll-thumb.jpg', quest_id=3, progress=1)
     punch_stupid_bird = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=3, progress=2)
     throw_org = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=3, progress=3)
 
-    #
-    # # actions
+    # actions
     leave_steak = Action(encounter_id=2,  description='Send a message to a recruiter')
     hit_troll_with_stick = Action(encounter_id=1, description='Apply to a Job')
     throw_granade = Action(encounter_id=3, description='Schedule a coffee meetup with a target Company')
     punch = Action(encounter_id=4, description='Update your resume')
     kick = Action(encounter_id=4, description='Go to networking event')
-
     throw = Action(encounter_id=5, description='Update your resume')
     attack = Action(encounter_id=5, description='Go to networking event')
     slap = Action(encounter_id=6, description='Update your resume')
