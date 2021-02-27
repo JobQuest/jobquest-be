@@ -3,7 +3,11 @@ import unittest
 from unittest.mock import patch
 from copy import deepcopy
 from api import create_app, db
-from api.database.models import UserQuest, User, Quest, Encounter, Action
+from api.database.models_object.users import User
+from api.database.models_object.quests import Quest
+from api.database.models_object.user_quests import UserQuest
+from api.database.models_object.encounters import Encounter
+from api.database.models_object.actions import Action
 from tests import db_drop_everything, assert_payload_field_type_value, \
     assert_payload_field_type
 
