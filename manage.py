@@ -48,12 +48,19 @@ def db_seed():
     user_quest_1 = UserQuest(quest_id=1, user_id=1, completion_status=False, progress=1)
     user_quest_2 = UserQuest(quest_id=2, user_id=2, completion_status=False, progress=2)
     user_quest_3 = UserQuest(quest_id=3, user_id=3, completion_status=False, progress=1)
+    user_quest_4 = UserQuest(quest_id=3, user_id=3, completion_status=False, progress=2)
+    user_quest_5 = UserQuest(quest_id=3, user_id=3, completion_status=False, progress=3)
+
     #
     # # encounters
     set_troll_bait = Encounter(monster_image='https://images.huffingtonpost.com/2015-02-05-trollersTroll-thumb.jpg', quest_id=1, progress=1)
     build_troll_trap = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=1, progress=1)
     knock_out = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=2, progress=1)
     trap = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=7, progress=1)
+
+    kick_troll = Encounter(monster_image='https://images.huffingtonpost.com/2015-02-05-trollersTroll-thumb.jpg', quest_id=3, progress=1)
+    punch_stupid_bird = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=3, progress=2)
+    throw_org = Encounter(monster_image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIfSV09BWeNuPejZM4txwTFJJKikYV_WMLg&usqp=CAU', quest_id=3, progress=3)
 
     #
     # # actions
@@ -63,6 +70,12 @@ def db_seed():
     punch = Action(encounter_id=4, description='Update your resume')
     kick = Action(encounter_id=4, description='Go to networking event')
 
+    throw = Action(encounter_id=5, description='Update your resume')
+    attack = Action(encounter_id=5, description='Go to networking event')
+    slap = Action(encounter_id=6, description='Update your resume')
+    smash = Action(encounter_id=6, description='Go to networking event')
+    hit = Action(encounter_id=7, description='Update your resume')
+    drop = Action(encounter_id=7, description='Go to networking event')
 
     db.session.add(ian)
     db.session.add(shaunda)
@@ -84,17 +97,28 @@ def db_seed():
     db.session.add(user_quest_1)
     db.session.add(user_quest_2)
     db.session.add(user_quest_3)
+    db.session.add(user_quest_4)
+    db.session.add(user_quest_5)
 
     db.session.add(set_troll_bait)
     db.session.add(build_troll_trap)
     db.session.add(knock_out)
     db.session.add(trap)
+    db.session.add(kick_troll)
+    db.session.add(punch_stupid_bird)
+    db.session.add(throw_org)
 
     db.session.add(leave_steak)
     db.session.add(hit_troll_with_stick)
     db.session.add(throw_granade)
     db.session.add(punch)
     db.session.add(kick)
+    db.session.add(attack)
+    db.session.add(throw)
+    db.session.add(slap)
+    db.session.add(smash)
+    db.session.add(hit)
+    db.session.add(drop)
 
     db.session.commit()
     print(f'obj count: {len(db.session.query(User).all())}')
