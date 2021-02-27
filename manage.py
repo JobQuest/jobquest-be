@@ -40,8 +40,11 @@ def db_seed():
 
     #quests
     url = urlparse.urlparse(os.environ.get('DATABASE_URL'))
+    dbname = url.path[1:]
     host = url.hostname
-    conn = psycopg2.connect(f"host={host} dbname=jobquest_dev user=postgres")
+    user = url.username
+    password = url.password
+    conn = psycopg2.connect(f"host={host} dbname={dbname} user={user} password={password}")
     cur = conn.cursor()
     with open('./data/quests.csv', 'r') as f:
         reader = csv.reader(f)
@@ -54,7 +57,7 @@ def db_seed():
     conn.commit()
 
     #encounters
-    conn = psycopg2.connect(f"host={host} dbname=jobquest_dev user=postgres")
+    conn = psycopg2.connect(f"host={host} dbname={dbname} user={user} password={password}")
     cur = conn.cursor()
     with open('./data/encounters.csv', 'r') as f:
         reader = csv.reader(f)
@@ -67,7 +70,7 @@ def db_seed():
     conn.commit()
 
     #actions
-    conn = psycopg2.connect(f"host={host} dbname=jobquest_dev user=postgres")
+    conn = psycopg2.connect(f"host={host} dbname={dbname} user={user} password={password}")
     cur = conn.cursor()
     with open('./data/actions.csv', 'r') as f:
         reader = csv.reader(f)
