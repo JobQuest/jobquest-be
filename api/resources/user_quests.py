@@ -13,27 +13,30 @@ from api.database.models.users import User
 from api.database.models.user_quests import UserQuest
 
 def _user_quest_payload(quests):
-    quest_objects = {}
+    serializable_user_quests = []
     for progress, quest in quests.items():
-        quest_objects[f"quest_id_{quest.id}"] = {
-            'id': quest.id,
-            'type': quest.type,
-            'name': quest.name,
-            'xp': quest.xp,
-            'encounter_req': quest.encounter_req,
-            'level': quest.level,
-            'progress': int(progress)
-        }
+        serializable_user_quests.append(_serialize_user_quest(quest, progress))
 
     return {
         'data': {
-            'id': 'Null',
-            'type': 'quests',
-            'attributes': {
-                 "quests": [quest_objects]
+        'id': 'Null',
+        'type': 'quests',
+        'attributes': {
+            "quests": serializable_user_quests
             }
         }
     }
+
+def _serialize_user_quest(quest, progress):
+    return { f"quest_id_{quest.id}": {
+        'id': quest.id,
+        'type': quest.type,
+        'name': quest.name,
+        'xp': quest.xp,
+        'encounter_req': quest.encounter_req,
+        'level': quest.level,
+        'progress': int(progress)
+    }}
 
 def _patched_user_quest_payload(user_quest):
     return {
@@ -57,7 +60,7 @@ class UserQuestsResource(Resource):
         try:
             completion_status = request.args['completion_status']
             user = User.query.filter_by(id=user_id).one()
-            user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
+            # user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
 
             if user_quests.__len__() == 0:
                 one = UserQuest(quest_id=1, user_id=user.id, completion_status=False, progress=1)
@@ -67,6 +70,7 @@ class UserQuestsResource(Resource):
                 db.session.add(two)
                 db.session.add(three)
                 db.session.commit()
+            else
                 user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
 
             for user_quest in user_quests:
