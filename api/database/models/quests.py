@@ -45,3 +45,7 @@ class Quest(db.Model):
         self.encounter_req = encounter_req
         self.type = type
         self.level = level
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
