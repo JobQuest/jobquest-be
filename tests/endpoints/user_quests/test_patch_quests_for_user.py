@@ -29,10 +29,9 @@ class PatchQuestsTest(unittest.TestCase):
 		db.session.commit()
 		self.user_quest_1 = UserQuest(quest_id=self.quest_1.id, user_id=self.user_1.id, progress=1, completion_status=False)
 		self.user_quest_2 = UserQuest(quest_id=self.quest_2.id, user_id=self.user_1.id, progress=1, completion_status=False)
-		db.session.add(self.user_quest_1)
-		db.session.commit()
-		db.session.add(self.user_quest_2)
-		db.session.commit()
+		self.user_quest_1.insert()
+		self.user_quest_2.insert()
+
 		self.payload = {
 						'quest_id': str(self.quest_1.id),
 						'progress': str(2)
