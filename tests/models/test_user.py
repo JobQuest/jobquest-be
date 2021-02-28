@@ -116,3 +116,30 @@ class AppTest(unittest.TestCase):
         else:
             # we should not end up in here
             self.assertTrue(False)  # pragma: no cover
+
+    def test_user_can_update_attributes(self):
+        user = User(username='ian', email='ian.douglas@iandouglas.com', xp=0)
+        user.insert()
+
+        self.assertEqual('ian', user.username)
+        self.assertEqual('ian.douglas@iandouglas.com', user.email)
+        self.assertEqual(0, user.xp)
+
+        user = User(username='ian2', email='ian.douglas@iandouglas.com', xp=100)
+        user.update()
+
+        self.assertEqual('ian2', user.username)
+        self.assertEqual('ian.douglas@iandouglas.com', user.email)
+        self.assertEqual(100, user.xp)
+
+    def test_user_can_be_deleted(self):
+        user = User(username='ian', email='ian.douglas@iandouglas.com', xp=0)
+        user.insert()
+
+        user_2 = User(username='cj', email='carson@iandouglas.com', xp=0)
+        user_2.insert()
+
+        self.assertEqual(User.query.count(), 2)
+
+        user.delete()
+        self.assertEqual(User.query.count(), 1)
