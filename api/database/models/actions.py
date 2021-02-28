@@ -28,3 +28,7 @@ class Action(db.Model):
 
         self.description = description
         self.encounter_id = encounter_id
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
