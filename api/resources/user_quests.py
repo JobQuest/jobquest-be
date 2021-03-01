@@ -89,17 +89,19 @@ class UserQuestsResource(Resource):
     def patch(self, *args, **kwargs):
         user_id = request.view_args['user_id']
         data = request.get_json()
-
         try:
             user = User.query.filter_by(id=user_id).one()
             user_quest = user.user_quests.filter_by(quest_id=data['quest_id']).one()
+
+            if data['progress'] == user_quest.progress and data['quest_id'] == user_quest.quest_id:
+                return abort(404)
+
             quest = Quest.query.filter_by(id=user_quest.quest_id).one()
             user_quest.progress = data['progress']
             db.session.add(user_quest)
             db.session.commit()
 
             if user_quest.progress > quest.encounter_req and user_quest.progress != 6:
-                # breakpoint()
                 user_quest.completion_status = True
                 user.xp += quest.xp
                 new_quest = Quest.query.filter_by(type=quest.type, level=(quest.level+1)).one()
@@ -112,7 +114,7 @@ class UserQuestsResource(Resource):
             elif user_quest.progress > quest.encounter_req and user_quest.progress == 6:
                 user_quest.completion_status = True
                 user.xp += quest.xp
-                # breakpoint()
+
                 db.session.add(user)
                 db.session.add(user_quest)
                 db.session.commit()

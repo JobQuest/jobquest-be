@@ -34,6 +34,10 @@ class Encounter(db.Model):
         self.quest_id = quest_id
         self.progress = progress
 
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
     def update(self):
         """
         updates a new model into a database

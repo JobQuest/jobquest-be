@@ -33,6 +33,15 @@ class UserQuest(db.Model):
         self.completion_status = completion_status
         self.progress = progress
 
+    def insert(self):
+        """
+        inserts a new model into a database
+        the model must have a unique username
+        the model must have a unique id or null id
+        """
+        db.session.add(self)
+        db.session.commit()
+
     def update(self):
         """
         updates a new model into a database
