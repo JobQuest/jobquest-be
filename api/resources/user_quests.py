@@ -89,10 +89,13 @@ class UserQuestsResource(Resource):
     def patch(self, *args, **kwargs):
         user_id = request.view_args['user_id']
         data = request.get_json()
-
         try:
             user = User.query.filter_by(id=user_id).one()
             user_quest = user.user_quests.filter_by(quest_id=data['quest_id']).one()
+
+            if data['progress'] == user_quest.progress and data['quest_id'] == user_quest.quest_id:
+                return abort(404)
+
             quest = Quest.query.filter_by(id=user_quest.quest_id).one()
             user_quest.progress = data['progress']
             db.session.add(user_quest)
