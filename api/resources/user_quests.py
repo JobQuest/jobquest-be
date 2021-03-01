@@ -95,19 +95,20 @@ class UserQuestsResource(Resource):
             user_quest = user.user_quests.filter_by(quest_id=data['quest_id']).one()
             quest = Quest.query.filter_by(id=user_quest.quest_id).one()
             user_quest.progress = data['progress']
-            db.session.add(user_quest)
-            db.session.commit()
+            user_quest.update()
+            # db.session.add(user_quest)
+            # db.session.commit()
             if user_quest.progress > quest.encounter_req:
                 user_quest.completion_status = True
                 user.xp += quest.xp
                 new_quest = Quest.query.filter_by(type=quest.type, level=(quest.level+1)).one()
-                add_user_quest = UserQuest(quest_id=new_quest.id, user_id=user.id, completion_status=False, progress=1)
-
-                db.session.add(user)
-                db.session.add(user_quest)
-                db.session.add(add_user_quest)
-                db.session.commit()
-
+                user_quest = UserQuest(quest_id=new_quest.id, user_id=user.id, completion_status=False, progress=1)
+                user.update()
+                # user_quest.insert()
+                # db.session.add(user)
+                # db.session.add(user_quest)
+                # db.session.add(add_user_quest)
+                # db.session.commit()
 
         except NoResultFound:
             return abort(404)
