@@ -102,7 +102,7 @@ class UserQuestsResource(Resource):
                 user_quest.completion_status = True
                 user.xp += quest.xp
                 new_quest = Quest.query.filter_by(type=quest.type, level=(quest.level+1)).one()
-                user_quest = UserQuest(quest_id=new_quest.id, user_id=user.id, completion_status=False, progress=1)
+                add_user_quest = UserQuest(quest_id=new_quest.id, user_id=user.id, completion_status=False, progress=1)
 
                 db.session.add(user)
                 db.session.add(user_quest)
