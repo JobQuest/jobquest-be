@@ -97,6 +97,7 @@ class UserQuestsResource(Resource):
             user_quest.progress = data['progress']
             db.session.add(user_quest)
             db.session.commit()
+
             if user_quest.progress > quest.encounter_req:
                 user_quest.completion_status = True
                 user.xp += quest.xp
@@ -107,7 +108,6 @@ class UserQuestsResource(Resource):
                 db.session.add(user_quest)
                 db.session.add(add_user_quest)
                 db.session.commit()
-
 
         except NoResultFound:
             return abort(404)

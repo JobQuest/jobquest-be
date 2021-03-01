@@ -25,7 +25,6 @@ def _validate_field(data, field, proceed, errors, missing_okay=False):
 
     return proceed, data[field], errors
 
-
 def _user_payload(user):
     return {
         'data': {
