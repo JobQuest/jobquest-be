@@ -22,13 +22,15 @@ class PatchQuestsTest(unittest.TestCase):
 		self.quest_1 = Quest(name="Make'a da pancake!", xp=5, level=1, encounter_req=3, type='active')
 		self.quest_2 = Quest(name="Make'a da biscuit!", xp=10, level=2, encounter_req=1, type='active')
 		self.quest_3 = Quest(name="Make'a da nuggets!", xp=15, level=3, encounter_req=5, type='active')
+		self.quest_4 = Quest(name="Make'a da wings!", xp=15, level=3, encounter_req=5, type='passive')
 		self.quest_1.insert()
 		self.quest_2.insert()
 		self.quest_3.insert()
+		self.quest_4.insert()
 
 		self.user_quest_1 = UserQuest(quest_id=self.quest_1.id, user_id=self.user_1.id, progress=1, completion_status=False)
 		self.user_quest_2 = UserQuest(quest_id=self.quest_2.id, user_id=self.user_1.id, progress=1, completion_status=False)
-		self.user_quest_3 = UserQuest(quest_id=self.quest_3.id, user_id=self.user_1.id, progress=5, completion_status=False)
+		self.user_quest_3 = UserQuest(quest_id=self.quest_4.id, user_id=self.user_1.id, progress=5, completion_status=False)
 
 		db.session.add(self.user_quest_1)
 		db.session.commit()
@@ -45,7 +47,7 @@ class PatchQuestsTest(unittest.TestCase):
 						'progress': str(2)
 		}
 		self.payload3 = {
-						'quest_id': str(self.quest_3.id),
+						'quest_id': str(self.quest_4.id),
 						'progress': str(6)
 		}
 
@@ -119,7 +121,7 @@ class PatchQuestsTest(unittest.TestCase):
 		self.assertEqual(4, user_quests_total)
 
 		new_user_quest = self.user_1.user_quests.all()[-1]
-		self.assertEqual(4, new_user_quest.quest_id)
+		self.assertEqual(3, new_user_quest.quest_id)
 
 		quest = Quest.query.filter_by(id=new_user_quest.quest_id).one()
 		self.assertEqual(self.quest_3.level, quest.level)
@@ -132,3 +134,9 @@ class PatchQuestsTest(unittest.TestCase):
 
 		user_quests_total = self.user_1.user_quests.all().__len__()
 		self.assertEqual(3, user_quests_total)
+
+		user_xp = self.user_1.xp
+		self.assertEqual(15, user_xp)
+
+		user_quest_status = self.user_quest_3.completion_status
+		self.assertEqual(True, user_quest_status)
