@@ -12,7 +12,7 @@ class User(db.Model):
     # Auto-incrementing, unique primary key
     id = Column(Integer, primary_key=True, autoincrement=True)
     # unique username
-    username = Column(String(80), unique=True, nullable=False)
+    username = Column(String(80), nullable=False)
     # unique email
     email = Column(String(100), unique=True, nullable=False)
     # xp
@@ -43,7 +43,7 @@ class User(db.Model):
 
         if user_id is not None:
             self.id = user_id
-            
+
     def insert(self):
         """
         inserts a new model into a database
