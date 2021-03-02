@@ -71,8 +71,7 @@ class AppTest(unittest.TestCase):
         except IntegrityError:
             self.assertTrue(True)
         else:
-            # we should not end up in here
-            self.assertTrue(False)  # pragma: no cover
+            self.assertTrue(False)  
 
     def test_user_model_missing_username(self):
         try:
@@ -81,8 +80,7 @@ class AppTest(unittest.TestCase):
         except IntegrityError:
             self.assertTrue(True)
         else:
-            # we should not end up in here
-            self.assertTrue(False)  # pragma: no cover
+            self.assertTrue(False)
 
     def test_user_model_unique_email(self):
         user = User(username='ian', email='ian.douglas@iandouglas.com', xp=0)
