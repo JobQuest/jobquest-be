@@ -13,7 +13,6 @@ from api.database.models.users import User
 
 def _validate_field(data, field, proceed, errors, missing_okay=False):
     if field in data:
-        # sanitize the user input here
         data[field] = bleach.clean(data[field].strip())
         if len(data[field]) == 0:
             proceed = False
@@ -86,8 +85,7 @@ class UserResource(Resource):
                 return user_payload, 200
             else:
                 new_user = User(username= user_name, email=user_email, xp=0)
-                db.session.add(new_user)
-                db.session.commit()
+                new_user.insert()
                 user_payload = _user_payload(new_user)
                 user_payload['success'] = True
                 user_payload['user_action'] = 'created'

@@ -67,3 +67,14 @@ class GetUserTest(unittest.TestCase):
         assert_payload_field_type_value(
             self, attributes, 'xp', int, self.user_1.xp
         )
+
+    def test_endpoint_will_return_a(self):
+        payload = {'email': 'bademail@example.com'}
+        response = self.client.post(
+                '/api/v1/users', json=payload,
+                content_type='application/json'
+            )
+        self.assertEqual(201, response.status_code)
+
+        data = json.loads(response.data.decode('utf-8'))
+        assert_payload_field_type_value(self, data, 'user_action', str, 'created')

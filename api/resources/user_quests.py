@@ -61,15 +61,13 @@ class UserQuestsResource(Resource):
             completion_status = request.args['completion_status']
             user = User.query.filter_by(id=user_id).one()
             user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
-
             if user.user_quests.all().__len__() == 0:
                 one = UserQuest(quest_id=1, user_id=user.id, completion_status=False, progress=1)
                 two = UserQuest(quest_id=4, user_id=user.id, completion_status=False, progress=1)
                 three = UserQuest(quest_id=7, user_id=user.id, completion_status=False, progress=1)
-                db.session.add(one)
-                db.session.add(two)
-                db.session.add(three)
-                db.session.commit()
+                one.insert()
+                two.insert()
+                three.insert()
                 user_quests = user.user_quests.filter_by(completion_status=completion_status).all()
 
             for user_quest in user_quests:
@@ -98,8 +96,7 @@ class UserQuestsResource(Resource):
 
             quest = Quest.query.filter_by(id=user_quest.quest_id).one()
             user_quest.progress = data['progress']
-            db.session.add(user_quest)
-            db.session.commit()
+            user_quest.insert()
 
             if user_quest.progress > quest.encounter_req and user_quest.progress != 6:
                 user_quest.completion_status = True
@@ -107,17 +104,16 @@ class UserQuestsResource(Resource):
                 new_quest = Quest.query.filter_by(type=quest.type, level=(quest.level+1)).one()
                 add_user_quest = UserQuest(quest_id=new_quest.id, user_id=user.id, completion_status=False, progress=1)
 
-                db.session.add(user)
-                db.session.add(user_quest)
-                db.session.add(add_user_quest)
-                db.session.commit()
+                user.insert()
+                user_quest.insert()
+                add_user_quest.insert()
+
             elif user_quest.progress > quest.encounter_req and user_quest.progress == 6:
                 user_quest.completion_status = True
                 user.xp += quest.xp
 
-                db.session.add(user)
-                db.session.add(user_quest)
-                db.session.commit()
+                user.insert()
+                user_quest.insert()
 
         except NoResultFound:
             return abort(404)
