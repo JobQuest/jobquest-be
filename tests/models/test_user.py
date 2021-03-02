@@ -61,12 +61,8 @@ class AppTest(unittest.TestCase):
         except IntegrityError:
             self.assertTrue(False)
         else:
-<<<<<<< HEAD
-            # we should not end up in here
-            self.assertTrue(True)  # pragma: no cover
-=======
             self.assertTrue(True)
->>>>>>> 824b85f5071cc07219733eaf7bed9490f780a89b
+
 
     def test_user_model_blank_username(self):
         try:

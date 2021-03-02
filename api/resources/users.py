@@ -85,14 +85,7 @@ class UserResource(Resource):
                 return user_payload, 200
             else:
                 new_user = User(username= user_name, email=user_email, xp=0)
-<<<<<<< HEAD
                 new_user.insert()
-                # db.session.add(new_user)
-                # db.session.commit()
-=======
-                db.session.add(new_user)
-                db.session.commit()
->>>>>>> 824b85f5071cc07219733eaf7bed9490f780a89b
                 user_payload = _user_payload(new_user)
                 user_payload['success'] = True
                 user_payload['user_action'] = 'created'
