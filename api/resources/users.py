@@ -13,7 +13,6 @@ from api.database.models.users import User
 
 def _validate_field(data, field, proceed, errors, missing_okay=False):
     if field in data:
-        # sanitize the user input here
         data[field] = bleach.clean(data[field].strip())
         if len(data[field]) == 0:
             proceed = False
