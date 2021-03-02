@@ -101,7 +101,7 @@ class UserQuestsResource(Resource):
             db.session.add(user_quest)
             db.session.commit()
 
-            if user_quest.progress > quest.encounter_req:
+            if user_quest.progress > quest.encounter_req and user_quest.progress != 6:
                 user_quest.completion_status = True
                 user.xp += quest.xp
                 new_quest = Quest.query.filter_by(type=quest.type, level=(quest.level+1)).one()
@@ -110,6 +110,13 @@ class UserQuestsResource(Resource):
                 db.session.add(user)
                 db.session.add(user_quest)
                 db.session.add(add_user_quest)
+                db.session.commit()
+            elif user_quest.progress > quest.encounter_req and user_quest.progress == 6:
+                user_quest.completion_status = True
+                user.xp += quest.xp
+
+                db.session.add(user)
+                db.session.add(user_quest)
                 db.session.commit()
 
         except NoResultFound:
