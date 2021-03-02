@@ -51,7 +51,7 @@ class AppTest(unittest.TestCase):
 
         self.assertEqual('ian.douglas@iandouglas.com', user.email)
 
-    def test_user_model_unique_username(self):
+    def test_user_model_username_does_not_have_to_be_unique(self):
         user = User(username='ian', email='ian.douglas@iandouglas.com', xp=0)
         user.insert()
 
@@ -59,10 +59,14 @@ class AppTest(unittest.TestCase):
             user = User(username='ian', email='ian.douglas+2@iandouglas.com', xp=0)
             user.insert()
         except IntegrityError:
-            self.assertTrue(True)
+            self.assertTrue(False)
         else:
+<<<<<<< HEAD
             # we should not end up in here
             self.assertTrue(True)  # pragma: no cover
+=======
+            self.assertTrue(True)
+>>>>>>> 824b85f5071cc07219733eaf7bed9490f780a89b
 
     def test_user_model_blank_username(self):
         try:

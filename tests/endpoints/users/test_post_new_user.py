@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# This will be used when we have the capability to create a new user with every
+# `POST '/api/v1/users'` request. This is set up to use when that Auth0 is up and running
+# When you use this test, the tests in `test_get_user_by_email.py` will no longer be needed
+>>>>>>> 824b85f5071cc07219733eaf7bed9490f780a89b
 
 import json
 import unittest
@@ -38,7 +44,10 @@ class PostUserTest(unittest.TestCase):
         data = json.loads(response.data.decode('utf-8'))
 
         assert_payload_field_type_value(self, data, 'success', bool, True)
+<<<<<<< HEAD
         assert_payload_field_type_value(self, data, 'user_action', str, 'created')
+=======
+>>>>>>> 824b85f5071cc07219733eaf7bed9490f780a89b
 
         assert_payload_field_type(self, data, 'data', dict)
 
@@ -80,11 +89,17 @@ class PostUserTest(unittest.TestCase):
                 content_type='application/json'
             )
 
+<<<<<<< HEAD
         data = json.loads(response.data.decode('utf-8'))
         self.assertEqual(200, response.status_code)
         assert_payload_field_type_value(self, data, 'user_action', str, 'retrieved')
 
     def test_endpoint_sadpath_username_is_same_unique_email(self):
+=======
+        self.assertEqual(200, response.status_code)
+
+    def test_endpoint_happypath_username_is_same_and_email_is_different(self):
+>>>>>>> 824b85f5071cc07219733eaf7bed9490f780a89b
         user_1 = User(username='Test', email='user@example.com', xp=0)
         user_1.insert()
 
@@ -97,6 +112,11 @@ class PostUserTest(unittest.TestCase):
                 '/api/v1/users', json=payload,
                 content_type='application/json'
             )
+<<<<<<< HEAD
         data = json.loads(response.data.decode('utf-8'))
         self.assertEqual(201, response.status_code)
         assert_payload_field_type_value(self, data, 'user_action', str, 'created')
+=======
+
+        self.assertEqual(201, response.status_code)
+>>>>>>> 824b85f5071cc07219733eaf7bed9490f780a89b

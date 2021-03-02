@@ -17,11 +17,11 @@ class GetUserTest(unittest.TestCase):
         db.create_all()
         self.client = self.app.test_client()
 
-        self.user_1 = User(username='zzz 1', email='e1', xp=0)
+        self.user_1 = User(username='zzz 1', email='e1@', xp=0)
         self.user_1.insert()
 
         self.payload = {
-                'email': 'e1'
+                'email': 'e1@'
         }
 
     def tearDown(self):
@@ -35,6 +35,7 @@ class GetUserTest(unittest.TestCase):
                     '/api/v1/users', json=payload,
                     content_type='application/json'
                 )
+
         self.assertEqual(200, response.status_code)
 
         data = json.loads(response.data.decode('utf-8'))
