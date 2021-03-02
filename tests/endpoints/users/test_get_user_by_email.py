@@ -67,17 +67,13 @@ class GetUserTest(unittest.TestCase):
             self, attributes, 'xp', int, self.user_1.xp
         )
 
-    def test_endpoint_sadpath_bad_email_user(self):
-        payload = {'email': 'bademail'}
+    def test_endpoint_will_return_a(self):
+        payload = {'email': 'bademail@example.com'}
         response = self.client.post(
                 '/api/v1/users', json=payload,
                 content_type='application/json'
             )
-        self.assertEqual(404, response.status_code)
+        self.assertEqual(201, response.status_code)
 
         data = json.loads(response.data.decode('utf-8'))
-        assert_payload_field_type_value(self, data, 'error', int, 404)
-        assert_payload_field_type_value(self, data, 'success', bool, False)
-        assert_payload_field_type_value(
-            self, data, 'message', str, 'resource not found'
-        )
+        assert_payload_field_type_value(self, data, 'user_action', str, 'created')

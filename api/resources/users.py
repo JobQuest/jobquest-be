@@ -68,14 +68,33 @@ class UserResource(Resource):
     def post(self, *args, **kwargs):
         data = request.get_json()
         user_email = data['email']
+        user_name = ""
+
+        if 'username' in data.keys():
+            user_name = data['username']
+        else:
+            user_name = data['email'].split('@')[0]
+
+        user = User.query.filter_by(email=user_email).all()
         try:
-            user = User.query.filter_by(email=user_email).one()
+            if user != []:
+                user = user[0]
+                user_payload = _user_payload(user)
+                user_payload['success'] = True
+                user_payload['user_action'] = 'retrieved'
+                return user_payload, 200
+            else:
+                new_user = User(username= user_name, email=user_email, xp=0)
+                new_user.insert()
+                # db.session.add(new_user)
+                # db.session.commit()
+                user_payload = _user_payload(new_user)
+                user_payload['success'] = True
+                user_payload['user_action'] = 'created'
+                return user_payload, 201
+
         except NoResultFound:
             return abort(404)
-
-        user_payload = _user_payload(user)
-        user_payload['success'] = True
-        return user_payload, 200
 
     def get(self):
         try:
