@@ -63,7 +63,6 @@ class AppTest(unittest.TestCase):
         else:
             self.assertTrue(True)
 
-
     def test_user_model_blank_username(self):
         try:
             user = User(username='', email='ian.douglas@iandouglas.com', xp=0)
@@ -71,7 +70,7 @@ class AppTest(unittest.TestCase):
         except IntegrityError:
             self.assertTrue(True)
         else:
-            self.assertTrue(False)  
+            self.assertTrue(False)
 
     def test_user_model_missing_username(self):
         try:

@@ -40,7 +40,6 @@ class PostUserTest(unittest.TestCase):
         assert_payload_field_type_value(self, data, 'success', bool, True)
         assert_payload_field_type_value(self, data, 'user_action', str, 'created')
 
-
         assert_payload_field_type(self, data, 'data', dict)
 
         user_data = data['data']
@@ -54,7 +53,7 @@ class PostUserTest(unittest.TestCase):
         )
 
         attributes = user_data['attributes']
-        # breakpoint()
+
         assert_payload_field_type_value(
             self, attributes, 'username', str, payload['username']
         )
