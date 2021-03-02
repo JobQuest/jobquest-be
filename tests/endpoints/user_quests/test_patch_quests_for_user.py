@@ -22,15 +22,22 @@ class PatchQuestsTest(unittest.TestCase):
 		self.quest_1 = Quest(name="Make'a da pancake!", xp=5, level=1, encounter_req=3, type='active')
 		self.quest_2 = Quest(name="Make'a da biscuit!", xp=10, level=2, encounter_req=1, type='active')
 		self.quest_3 = Quest(name="Make'a da nuggets!", xp=15, level=3, encounter_req=5, type='active')
+		self.quest_4 = Quest(name="Make'a da wings!", xp=15, level=3, encounter_req=5, type='passive')
 		self.quest_1.insert()
 		self.quest_2.insert()
 		self.quest_3.insert()
+		self.quest_4.insert()
 
 		self.user_quest_1 = UserQuest(quest_id=self.quest_1.id, user_id=self.user_1.id, progress=1, completion_status=False)
 		self.user_quest_2 = UserQuest(quest_id=self.quest_2.id, user_id=self.user_1.id, progress=1, completion_status=False)
-		self.user_quest_1.insert()
-		self.user_quest_2.insert()
+		self.user_quest_3 = UserQuest(quest_id=self.quest_4.id, user_id=self.user_1.id, progress=5, completion_status=False)
 
+		db.session.add(self.user_quest_1)
+		db.session.commit()
+		db.session.add(self.user_quest_2)
+		db.session.commit()
+		db.session.add(self.user_quest_3)
+		db.session.commit()
 		self.payload = {
 						'quest_id': str(self.quest_1.id),
 						'progress': str(2)
@@ -40,8 +47,8 @@ class PatchQuestsTest(unittest.TestCase):
 						'progress': str(2)
 		}
 		self.payload3 = {
-						'quest_id': str(self.quest_3.id),
-						'progress': str(3)
+						'quest_id': str(self.quest_4.id),
+						'progress': str(6)
 		}
 
 	def tearDown(self):
@@ -105,13 +112,13 @@ class PatchQuestsTest(unittest.TestCase):
 
 	def test_user_gets_new_quest_when_they_complete_quests(self):
 		user_quests_total = self.user_1.user_quests.all().__len__()
-		self.assertEqual(2, user_quests_total)
+		self.assertEqual(3, user_quests_total)
 		payload2 = deepcopy(self.payload2)
 
 		response = self.client.patch(f'/api/v1/users/{self.user_1.id}/quests', json=payload2, content_type='application/json')
 
 		user_quests_total = self.user_1.user_quests.all().__len__()
-		self.assertEqual(3, user_quests_total)
+		self.assertEqual(4, user_quests_total)
 
 		new_user_quest = self.user_1.user_quests.all()[-1]
 		self.assertEqual(3, new_user_quest.quest_id)
@@ -121,19 +128,15 @@ class PatchQuestsTest(unittest.TestCase):
 		self.assertEqual(self.quest_3.name, quest.name)
 		self.assertEqual(self.quest_3.type, quest.type)
 
-	# def test_when_user_completes_all_levels_of_quest_path(self):
-	# 	payload3 = deepcopy(self.payload3)
-	# 	response = self.client.patch(f'/api/v1/users/{self.user_1.id}/quests', json=payload3, content_type='application/json')
-	#
-	# 	user_quests_total = self.user_1.user_quests.all().__len__()
-	# 	self.assertEqual(4, user_quests_total)
-	#
-	# 	new_user_quest = self.user_1.user_quests.all()[-1]
-	# 	self.assertEqual(1, new_user_quest.quest_id)
-	#
-	# 	quest = Quest.query.filter_by(id=new_user_quest.quest_id).one()
-	# 	self.assertEqual(self.quest_1.level, quest.level)
-	# 	self.assertEqual(self.quest_1.name, quest.name)
-	# 	self.assertEqual(self.quest_1.type, quest.type)
-	#
-	# Tabled
+	def test_when_user_completes_all_levels_of_quest_path(self):
+		payload3 = deepcopy(self.payload3)
+		response = self.client.patch(f'/api/v1/users/{self.user_1.id}/quests', json=payload3, content_type='application/json')
+
+		user_quests_total = self.user_1.user_quests.all().__len__()
+		self.assertEqual(3, user_quests_total)
+
+		user_xp = self.user_1.xp
+		self.assertEqual(15, user_xp)
+
+		user_quest_status = self.user_quest_3.completion_status
+		self.assertEqual(True, user_quest_status)
