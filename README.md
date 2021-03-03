@@ -1,5 +1,9 @@
 
 ![](https://img.shields.io/badge/JobQuest-BE-success)
+![](https://img.shields.io/github/issues/JobQuest/jobquest-be?style=for-the-badge)
+![](https://img.shields.io/github/stars/JobQuest/jobquest-be?style=for-the-badge)
+![](https://img.shields.io/github/forks/JobQuest/jobquest-be?style=for-the-badge)
+![](https://img.shields.io/pypi/pyversions/flask?style=for-the-badge)
 
 ## Table of Contents
   - [What it does](#what-it-does)
