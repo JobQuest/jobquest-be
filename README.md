@@ -5,6 +5,8 @@
 ![](https://img.shields.io/github/forks/JobQuest/jobquest-be?style=for-the-badge)
 ![](https://img.shields.io/pypi/pyversions/flask?style=for-the-badge)
 
+![image](https://user-images.githubusercontent.com/62966396/109879954-8e72da00-7c33-11eb-840b-98511b8b696f.png)
+
 ## Table of Contents
   - [What it does](#what-it-does)
   - [How to Install JobQuest-be](#how-to-install-jobquest-be)
