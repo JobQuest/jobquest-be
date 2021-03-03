@@ -7,6 +7,9 @@
 
 ![image](https://user-images.githubusercontent.com/62966396/109879954-8e72da00-7c33-11eb-840b-98511b8b696f.png)
 
+#### [To play JobQuest, visit us here!](https://job-quest-fe.herokuapp.com/)
+[Link to Front-End repo](https://github.com/JobQuest/jobquest-fe)
+
 ## Table of Contents
   - [What it does](#what-it-does)
   - [How to Install JobQuest-be](#how-to-install-jobquest-be)
@@ -15,7 +18,6 @@
   - [Dependencies](#dependencies)
   - [Testing](#testing)
   - [Learning Goals](#learning-goals)
-  - [Licenses](#licenses)
   - [Contact](#contact)
   - [Acknowledgments](#acknowledgments)
 
@@ -108,7 +110,6 @@ To install dependencies, run `pip install -r requirements.txt`
 - gunicorn v.20.0.4
 - pep8 v.1.7.1
 - pycodestyle v.2.6.0
-- peewee v.3.14.1
 
 
 ## Testing
