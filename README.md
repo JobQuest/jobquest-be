@@ -23,14 +23,19 @@
 
 ## API Contract
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/4caa4199654cadbe93ae)
+
 ### POST `/api/v1/users`
 
-<img width="1015" alt="Screen Shot 2021-02-25 at 6 04 29 PM" src="https://user-images.githubusercontent.com/62966396/109249903-da420100-77a5-11eb-8e8b-38101978d1c8.png">
+<img width="500" alt="Create new user" src="https://user-images.githubusercontent.com/65981543/109872832-31bef180-7c2a-11eb-96f3-b43fd3d49e70.png">
 
 ### GET `/api/v1/users`
 
-<img width="1077" alt="Screen Shot 2021-02-25 at 6 13 31 PM" src="https://user-images.githubusercontent.com/62966396/109249645-5ab43200-77a5-11eb-9047-7e607c17f098.png">
+<img width="500" alt="GET All Users" src="https://user-images.githubusercontent.com/65981543/109873473-0688d200-7c2b-11eb-8c4a-5c6393fccc36.png">
 
+### POST `/api/v1/users` Get User by Email
+
+<img width="500" alt="Create user by email" src="https://user-images.githubusercontent.com/65981543/109873311-d04b5280-7c2a-11eb-8403-7a22a9572568.png">
 
 ### unsuccessful response: with no email in the db:
 
