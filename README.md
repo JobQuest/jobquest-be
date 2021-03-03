@@ -31,7 +31,7 @@
 next, create your databases and run your migrations 
 
 5. `createdb jobquest_dev` & `createdb jobquest_test`
-6. `export DATABASE_URL=postgresql://localhost:5432/jobquest_dev`
+6. `export DATABASE_URL=postgresql://postgres:@localhost:5432/jobquest_dev`
 7. `python3 manage.py db migrate`
 8. `python3 manage.py db upgrade`
 
