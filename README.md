@@ -14,6 +14,11 @@
   - [Acknowledgments](#acknowledgments)
 
 ## What it does
+JobQuest is a text-based RPG-style campaign that aids in the job search process, while making it fun! A user can login or create an account to track their progress through different quests to defeat fantastical monsters. There are 3 types of quests: active, passive, and supportive. Active quests require you to perform actions such as *apply for a job* or *send out a resume* in order to conquer the beast. Passive quests will have you doing things like *update your resume* and *research potential companies* in order to triumph over evil. For supportive quests, you will be helping out friends (Guild-mates coming soon!) by completing such activities as *host a mock interview* for them or *review their solution to a coding challenge*. Once you complete an action outside the game, you will then select that option to deal damage to your demon. With each new quest level, the creatures you battle will become stronger, and therefore will be tougher to defeat. By completing every quest, you shall have taken the necessary steps to obtaining a job**.
+
+Good luck on your journey through JobQuest!
+
+** Disclaimer: The creators of JobQuest do not in any way guarantee employment by completing this game, and thinking so is down right silly of you.
 
 ## How to Install JobQuest-be
 
