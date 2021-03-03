@@ -126,7 +126,6 @@ These are the contributors with whom without their imagination, hardwork and ded
  width="100" height="auto" />
 
 #### Carson Jardine: [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/carson-jardine/), [📬](mailto:carsonjardine@gmail.com), [GitHub](https://github.com/carson-jardine)
-[![GitHubLogo][gitHub-sheild]](https://github.com/carson-jardine)
 
 <img src="https://avatars0.githubusercontent.com/u/66269306?s=400&u=b59f8ccc1002269319d952aa028ee270629b2ead&v=4" alt="Olga Morgan"
  width="100" height="auto" />
