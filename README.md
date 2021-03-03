@@ -20,6 +20,11 @@
   - [Acknowledgments](#acknowledgments)
 
 ## What it does
+JobQuest is a text-based RPG-style campaign that aids in the job search process, while making it fun! A user can login or create an account to track their progress through different quests to defeat fantastical monsters. There are 3 types of quests: active, passive, and supportive. Active quests require you to perform actions such as *apply for a job* or *send out a resume* in order to conquer the beast. Passive quests will have you doing things like *update your resume* and *research potential companies* in order to triumph over evil. For supportive quests, you will be helping out friends (Guild-mates coming soon!) by completing such activities as *host a mock interview* for them or *review their solution to a coding challenge*. Once you complete an action outside the game, you will then select that option to deal damage to your demon. With each new quest level, the creatures you battle will become stronger, and therefore will be tougher to defeat. By completing every quest, you shall have taken the necessary steps to obtaining a job**.
+
+Good luck on your journey through JobQuest!
+
+** Disclaimer: The creators of JobQuest do not in any way guarantee employment by completing this game, and thinking so is down right silly of you.
 
 ## How to Install JobQuest-be
 
@@ -88,6 +93,23 @@ Get User by Email
 ![Screen Shot 2021-02-25 at 10 51 19 AM](https://user-images.githubusercontent.com/62966396/109195377-ac35d000-7757-11eb-9753-31148d771b35.png)
 
 ## Dependencies
+To install dependencies, run `pip install -r requirements.txt`
+- Flask v.1.1.2
+- Flask-RESTful v.0.3.8
+- Flask-SQLAlchemy v.2.4.4
+- psycopg2-binary v.2.8.6
+- SQLAlchemy v.1.3.19
+- flask_migrate v.2.5.3
+- Flask-Cors v.3.0.9
+- bleach v.3.2.1
+- flask-script v.2.0.6
+- pytest v.6.1.0
+- coverage v.5.3
+- gunicorn v.20.0.4
+- pep8 v.1.7.1
+- pycodestyle v.2.6.0
+- peewee v.3.14.1
+
 
 ## Testing
 Testing coverage sits at 98%
@@ -110,8 +132,6 @@ Run `pytest` in the terminal to see that all tests are passing. As of the curren
 * Gain more experience using continuous integration tools to build and automate the deployment of features in various environments
 * Build applications that execute in development, test, CI, and production environments
 * Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
-
-## Licenses
 
 ## Contact
 
