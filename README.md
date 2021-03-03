@@ -60,6 +60,23 @@ Good luck on your journey through JobQuest!
 ![Screen Shot 2021-02-25 at 10 51 19 AM](https://user-images.githubusercontent.com/62966396/109195377-ac35d000-7757-11eb-9753-31148d771b35.png)
 
 ## Dependencies
+To install dependencies, run `pip install -r requirements.txt`
+- Flask v.1.1.2
+- Flask-RESTful v.0.3.8
+- Flask-SQLAlchemy v.2.4.4
+- psycopg2-binary v.2.8.6
+- SQLAlchemy v.1.3.19
+- flask_migrate v.2.5.3
+- Flask-Cors v.3.0.9
+- bleach v.3.2.1
+- flask-script v.2.0.6
+- pytest v.6.1.0
+- coverage v.5.3
+- gunicorn v.20.0.4
+- pep8 v.1.7.1
+- pycodestyle v.2.6.0
+- peewee v.3.14.1
+
 
 ## Testing
 
