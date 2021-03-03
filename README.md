@@ -68,6 +68,15 @@ Run `pytest` in the terminal to see that all tests are passing. As of the curren
 
 ## Learning Goals
 
+* Ultimately, demonstrate knowledge you’ve gained throughout Turing
+* Use an agile process to turn well defined requirements into deployed and production ready software
+* Gain experience dividing applications into components and domains of responsibilities to facilitate multi-developer teams. Service oriented architecture concepts and patterns are highly encouraged.
+* Explore and implement new concepts, patterns, or libraries that have not been explicitly taught while at Turing
+* Practice an advanced, professional git workflow (see whole-team expectations)
+* Gain more experience using continuous integration tools to build and automate the deployment of features in various environments
+* Build applications that execute in development, test, CI, and production environments
+* Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
+
 ## Licenses
 
 ## Contact
