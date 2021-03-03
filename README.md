@@ -62,6 +62,10 @@
 
 ## Testing
 
+Make sure that your enviornment variable is set to `testing`. This is done by running `env`. Check that your `DATABASE_URL` is set to the `jobquest_test` database. `DATABASE_URL=postgresql://localhost:5432/jobquest_test`
+
+Run `pytest` in the terminal to see that all tests are passing. As of the current status there are 48 passing tests. Current code coverage is 98%
+
 ## Learning Goals
 
 ## Licenses
