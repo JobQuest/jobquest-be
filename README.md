@@ -133,8 +133,6 @@ Run `pytest` in the terminal to see that all tests are passing. As of the curren
 * Build applications that execute in development, test, CI, and production environments
 * Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
-## Licenses
-
 ## Contact
 
 These are the contributors with whom without their imagination, hardwork and dedication this project would not have happened. We are all really excited to talk more about our project with you! Feel free to reach out to us!
