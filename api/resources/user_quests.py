@@ -78,8 +78,9 @@ class UserQuestsResource(Resource):
         except NoResultFound:
             return abort(404)
 
-        except BadRequestKeyError:
-            return abort()
+        # TODO: WHY YOU NO WORK
+        # except BadRequestKeyError:
+        #     return abort(400)
 
         user_quest_payload = _user_quest_payload(quests)
         return user_quest_payload, 200

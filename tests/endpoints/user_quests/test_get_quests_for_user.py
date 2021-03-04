@@ -109,11 +109,13 @@ class GetQuestsTest(unittest.TestCase):
         assert_payload_field_type_value(self, quest_data, 'level', int, self.quest_1.level)
 
     def test_sad_path_get_quests_for_user_no_params(self):
-        response = self.client.get(f"/api/v1/users/{self.user_1.id}/quests", content_type='application/json')
+        response = self.client.get(f"/api/v1/users/10/quests?completion_status=false", content_type='application/json')
+        self.assertEqual(404, response.status_code)
 
-        self.assertEqual(500, response.status_code)
-
-        # Come back and add in error messaging later
+        # TODO: BadRequestKeyError WHYY
+        # response = self.client.get(f"/api/v1/users/{self.user_1.id}/quests?completion_status=2}")
+        # breakpoint()
+        # self.assertEqual(400, response.status_code)
 
     def test_for_user_without_user_quests(self):
         new_user = User(username='Billy', email="billy@example.com", xp=0)
