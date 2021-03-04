@@ -1,11 +1,13 @@
 
-![](https://img.shields.io/badge/JobQuest-BE-success)
+![](https://img.shields.io/badge/JobQuest-BE-success?style=for-the-badge)
 ![](https://img.shields.io/github/issues/JobQuest/jobquest-be?style=for-the-badge)
 ![](https://img.shields.io/github/stars/JobQuest/jobquest-be?style=for-the-badge)
 ![](https://img.shields.io/github/forks/JobQuest/jobquest-be?style=for-the-badge)
 ![](https://img.shields.io/pypi/pyversions/flask?style=for-the-badge)
+![](https://img.shields.io/travis/com/JobQuest/jobquest-be?style=for-the-badge)
 
-![image](https://user-images.githubusercontent.com/62966396/109879954-8e72da00-7c33-11eb-840b-98511b8b696f.png)
+<img width="453" alt="Screen Shot 2021-03-03 at 7 16 18 PM" src="https://user-images.githubusercontent.com/62966396/109900750-19b09780-7c55-11eb-82f5-a01fe5a18e9d.png">
+
 
 #### [To play JobQuest, visit us here!](https://job-quest-fe.herokuapp.com/)
 [Link to Front-End repo](https://github.com/JobQuest/jobquest-fe)
