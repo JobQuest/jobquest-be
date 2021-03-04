@@ -19,6 +19,8 @@ class PatchQuestsTest(unittest.TestCase):
 
 		self.user_1 = User(username='George', email="george@example.com", xp=0)
 		self.user_1.insert()
+		self.user_2 = User(username='Carson', email="carson@example.com", xp=0)
+		self.user_2.insert()
 		self.quest_1 = Quest(name="Make'a da pancake!", xp=5, level=1, encounter_req=3, type='active')
 		self.quest_2 = Quest(name="Make'a da biscuit!", xp=10, level=2, encounter_req=1, type='active')
 		self.quest_3 = Quest(name="Make'a da nuggets!", xp=15, level=3, encounter_req=5, type='active')
@@ -31,22 +33,28 @@ class PatchQuestsTest(unittest.TestCase):
 		self.user_quest_1 = UserQuest(quest_id=self.quest_1.id, user_id=self.user_1.id, progress=1, completion_status=False)
 		self.user_quest_2 = UserQuest(quest_id=self.quest_2.id, user_id=self.user_1.id, progress=1, completion_status=False)
 		self.user_quest_3 = UserQuest(quest_id=self.quest_4.id, user_id=self.user_1.id, progress=5, completion_status=False)
+		self.user_quest_4 = UserQuest(quest_id=self.quest_2.id, user_id=self.user_2.id, progress=1, completion_status=False)
 
 		self.user_quest_1.insert()
 		self.user_quest_2.insert()
 		self.user_quest_3.insert()
-	
+		self.user_quest_4.insert()
+
 		self.payload = {
-						'quest_id': str(self.quest_1.id),
-						'progress': str(2)
+						'quest_id': int(self.quest_1.id),
+						'progress': int(2)
 		}
 		self.payload2 = {
-						'quest_id': str(self.quest_2.id),
-						'progress': str(2)
+						'quest_id': int(self.quest_2.id),
+						'progress': int(2)
 		}
 		self.payload3 = {
-						'quest_id': str(self.quest_4.id),
-						'progress': str(6)
+						'quest_id': int(self.quest_4.id),
+						'progress': int(6)
+		}
+		self.payload4 = {
+						'quest_id': int(self.quest_2.id),
+						'progress': int(1)
 		}
 
 	def tearDown(self):
@@ -98,7 +106,7 @@ class PatchQuestsTest(unittest.TestCase):
 		response = self.client.patch(f"/api/v1/users/{self.user_1.id}/quests", content_type='application/json')
 
 		self.assertEqual(400, response.status_code)
-# Come back and add in error messaging later
+		# Come back and add in error messaging later
 
 	def test_user_gains_xp_when_they_complete_quests(self):
 		self.assertEqual(0, self.user_1.xp)
@@ -138,3 +146,15 @@ class PatchQuestsTest(unittest.TestCase):
 
 		user_quest_status = self.user_quest_3.completion_status
 		self.assertEqual(True, user_quest_status)
+
+	def test_sad_path_progress_doesnt_change(self):
+		payload4 = deepcopy(self.payload4)
+		response = self.client.patch(f'/api/v1/users/{self.user_2.id}/quests', json=payload4, content_type='application/json')
+
+		self.assertEqual(404, response.status_code)
+
+	def test_sad_path_user_does_not_exist(self):
+		payload4 = deepcopy(self.payload4)
+		response = self.client.patch(f'/api/v1/users/12/quests', json=payload4, content_type='application/json')
+		
+		self.assertEqual(404, response.status_code)
