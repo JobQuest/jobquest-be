@@ -4,6 +4,7 @@ omit =
     run.py
     manage.py
     venv/*
+    *tests*
 
 [report]
 omit =
@@ -11,6 +12,7 @@ omit =
     run.py
     manage.py
     venv/*
+    *tests*
 
 ignore_errors = True
 
